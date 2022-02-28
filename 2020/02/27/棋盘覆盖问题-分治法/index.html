@@ -5,29 +5,29 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://zouyunkai.github.com/myblog">
+  <link rel="dns-prefetch" href="https://zouyunkai.github.io/myblog">
   <title>棋盘覆盖问题 分治法 | Sweet@</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="递归与分治算法 分治法概念：顾名思义就是用我们平常所说的“分而治之”的思想来解决复杂的，难以直接解决的问题。（如：问题规模为n的hanoi问题是难以直接解决的，所以可以分解为两个问题规模为n-1的两个hanoi问题····，直至分解到问题规模为1，即使问题规模小到能够方便的直接求解为止，具体问题具体分析）  分治法求解问题的基本策略：其中，分治法与递归经常同时用在算法的设计之中，因为分治法分解的子">
 <meta property="og:type" content="article">
 <meta property="og:title" content="棋盘覆盖问题 分治法">
-<meta property="og:url" content="https://zouyunkai.github.com/myblog/2020/02/27/%E6%A3%8B%E7%9B%98%E8%A6%86%E7%9B%96%E9%97%AE%E9%A2%98-%E5%88%86%E6%B2%BB%E6%B3%95/index.html">
+<meta property="og:url" content="https://zouyunkai.github.io/myblog/2020/02/27/%E6%A3%8B%E7%9B%98%E8%A6%86%E7%9B%96%E9%97%AE%E9%A2%98-%E5%88%86%E6%B2%BB%E6%B3%95/index.html">
 <meta property="og:site_name" content="Sweet@">
 <meta property="og:description" content="递归与分治算法 分治法概念：顾名思义就是用我们平常所说的“分而治之”的思想来解决复杂的，难以直接解决的问题。（如：问题规模为n的hanoi问题是难以直接解决的，所以可以分解为两个问题规模为n-1的两个hanoi问题····，直至分解到问题规模为1，即使问题规模小到能够方便的直接求解为止，具体问题具体分析）  分治法求解问题的基本策略：其中，分治法与递归经常同时用在算法的设计之中，因为分治法分解的子">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://zouyunkai.github.com/myblog/%5Caoyue%5Cimages%5Cpasted-51.png">
-<meta property="og:image" content="https://zouyunkai.github.com/myblog/%5Caoyue%5Cimages%5Cpasted-53.png">
-<meta property="og:image" content="https://zouyunkai.github.com/myblog/%5Caoyue%5Cimages%5Cpasted-52.png">
-<meta property="og:image" content="https://zouyunkai.github.com/myblog/%5Caoyue%5Cimages%5Cpasted-54.png">
-<meta property="og:image" content="https://zouyunkai.github.com/myblog/%5Caoyue%5Cimages%5Cpasted-55.png">
-<meta property="og:image" content="https://zouyunkai.github.com/myblog/%5Caoyue%5Cimages%5Cpasted-442.png">
-<meta property="og:image" content="https://zouyunkai.github.com/myblog/%5Caoyue%5Cimages%5Cpasted-525.png">
+<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-51.png">
+<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-53.png">
+<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-52.png">
+<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-54.png">
+<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-55.png">
+<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-442.png">
+<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-525.png">
 <meta property="article:published_time" content="2020-02-27T09:49:00.000Z">
 <meta property="article:modified_time" content="2022-02-26T03:52:51.045Z">
 <meta property="article:author" content="zouqingzhi">
 <meta property="article:tag" content="棋盘覆盖">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zouyunkai.github.com/myblog/%5Caoyue%5Cimages%5Cpasted-51.png">
+<meta name="twitter:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-51.png">
   
     <link rel="alternative" href="/atom.xml" title="Sweet@" type="application/atom+xml">
   
@@ -284,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://zouyunkai.github.com/myblog/2020/02/27/%E6%A3%8B%E7%9B%98%E8%A6%86%E7%9B%96%E9%97%AE%E9%A2%98-%E5%88%86%E6%B2%BB%E6%B3%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://zouyunkai.github.io/myblog/2020/02/27/%E6%A3%8B%E7%9B%98%E8%A6%86%E7%9B%96%E9%97%AE%E9%A2%98-%E5%88%86%E6%B2%BB%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -419,11 +419,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++字符串处理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++字符串处理</a>
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -436,6 +436,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c语言小知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -452,10 +456,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,11 +575,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">隐写</a>
+                <a href="javascript:void(0)" class="js-tag color3">训练</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">训练</a>
+                <a href="javascript:void(0)" class="js-tag color3">隐写</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +619,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">国王挖金子</a>
+                <a href="javascript:void(0)" class="js-tag color1">最小生成树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">最小生成树</a>
+                <a href="javascript:void(0)" class="js-tag color1">国王挖金子</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,11 +643,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color3">新生训练_02</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">新生训练_02</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,10 +671,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">棋盘覆盖</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
@@ -687,11 +683,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">  </a>
+                <a href="javascript:void(0)" class="js-tag color5">棋盘覆盖</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">boos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">  </a>
               </li>
              
               <li class="article-tag-list-item">
