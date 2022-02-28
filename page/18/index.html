@@ -136,19 +136,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-数据库笔记一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-数据库概论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/zouyunkai/myblog/2020/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%E4%B8%80/">数据库笔记（一）</a>
+      <a class="article-title" href="/zouyunkai/myblog/2020/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/">数据库概论笔记一</a>
     </h1>
   
 
         
-        <a href="/zouyunkai/myblog/2020/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%E4%B8%80/" class="archive-article-date">
+        <a href="/zouyunkai/myblog/2020/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/" class="archive-article-date">
   	<time datetime="2020-02-25T10:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-25</time>
 </a>
         
@@ -158,241 +158,240 @@
       
         <h4 id="数据库系统的核心：数据模型"><a href="#数据库系统的核心：数据模型" class="headerlink" title="数据库系统的核心：数据模型"></a>数据库系统的核心：数据模型</h4><p>**数据模型分为两类（两个不同的层次）  **<br>（1 ） 概念模型，也称信息模型<br>它是按用户的观点来对数据和信息建模，用于数据库设计。<br>（2 ） 逻辑模型和物理模型    </p>
 <ul>
-<li>逻辑模型主要包括网状模型 、 层次模型 、 关系模型 、 面向对象数据模型 、 对象关系数据模型 、 半结构化数据模型等。 </li>
+<li>逻辑模型主要包括网状模型 、 层次模型 、 关系模型 、 面向对象数据模型 、 对象关系数据模型 、 半结构化数据模型等。<br> 按计算机系统的观点对数据建模 ，用于DBMS 实现。</li>
 <li>物理模型是对数据最底层的抽象<br>描述数据在系统内 （ 磁盘上 ） 的表示方式和存取方法。</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-399.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-402.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-403.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-399.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-402.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-403.png" alt="upload successful"></p>
 <ul>
 <li><p>数据模型是严格定义的一组概念的集合<br>精确地描述了系统的静态特性、动态特性和完整性约束条件<br>(Integrity Constraints) 。</p>
 </li>
-<li><p><strong>数据模型</strong>由三部分组成<br>1、 数据结构– 描述系统的静态特性（层次结构，网状，关系）<br>2、 数据操作– 描述系统的动态特性（查询，更新）<br>3、 完整性约束</p>
+<li><p>数据模型由三部分组成<br>1 数据结构– 描述系统的静态特性（层次结构，网状，关系）<br>2 数据操作– 描述系统的动态特性（查询，更新）<br>3 完整性约束</p>
 </li>
 <li><p>关系模型</p>
 </li>
 </ul>
-<p><strong>（1）数据模型</strong><br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-404.png" alt="upload successful"></p>
+<p><strong>（1）数据模型</strong><br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-404.png" alt="upload successful"></p>
 <p> 关系必须是规范化的，满足一定的规范条件<br><strong>最基本的规范条件：关系的每一个分量必须是一个不可分的数据项 ，不允许表中还有表 。</strong></p>
-<p> <strong>（2）数据操作</strong>是集合操作 ，关系 操作对象和操作结果都是关系：查询、插入、删除、更新<br><strong>（3）数据完整性</strong><br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-405.png" alt="upload successful"></p>
-<h4 id="数据系统的结构"><a href="#数据系统的结构" class="headerlink" title="数据系统的结构"></a>数据系统的结构</h4><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-456.png" alt="upload successful"></p>
+<p> <strong>（2）数据操作</strong>是集合操作 ，关系 操作对象和操作结果都是关系：查询、插入、删除、更新<br><strong>（3）数据完整性</strong><br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-405.png" alt="upload successful"></p>
+<h4 id="数据系统的结构"><a href="#数据系统的结构" class="headerlink" title="数据系统的结构"></a>数据系统的结构</h4><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-456.png" alt="upload successful"></p>
 <ul>
 <li>模式 外模式 内模式</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-457.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-458.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-457.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-458.png" alt="upload successful"></p>
 <ul>
 <li>映射关系</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-459.png" alt="upload successful"></p>
-<h4 id="数据系统的组成"><a href="#数据系统的组成" class="headerlink" title="数据系统的组成"></a>数据系统的组成</h4><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-455.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-459.png" alt="upload successful"></p>
+<h4 id="数据系统的组成"><a href="#数据系统的组成" class="headerlink" title="数据系统的组成"></a>数据系统的组成</h4><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-455.png" alt="upload successful"></p>
 <h4 id="关系数据结构和关系的完整性"><a href="#关系数据结构和关系的完整性" class="headerlink" title="关系数据结构和关系的完整性"></a>关系数据结构和关系的完整性</h4><h4 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h4><ul>
 <li>选择</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-444.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images1/image-20220218205624897.png" alt="image-20220218205624897"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-444.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-446.png" alt="upload successful"></p>
 <ul>
-<li><p>投影<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-447.png" alt="upload successful"></p>
+<li><p>投影<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-447.png" alt="upload successful"></p>
 </li>
 <li><p>连接</p>
-<p>​    <img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images1/image-20220218211344211.png" alt="image-20220218211344211"></p>
 </li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-448.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-449.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-450.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-448.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-449.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-450.png" alt="upload successful"></p>
 <p> 其中连接操作涉及选择和笛卡尔积，不涉及投影。 </p>
 <ul>
 <li>除运算</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-451.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-451.png" alt="upload successful"></p>
 <ul>
 <li>实例运算</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-452.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-453.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-454.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-452.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-453.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-454.png" alt="upload successful"></p>
 <h4 id="关系演算"><a href="#关系演算" class="headerlink" title="关系演算"></a>关系演算</h4><ul>
-<li>元组关系演算<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-476.png" alt="upload successful"></li>
+<li>元组关系演算<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-476.png" alt="upload successful"></li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-477.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-478.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-479.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-480.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-481.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-477.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-478.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-479.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-480.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-481.png" alt="upload successful"></p>
 <ul>
 <li>域关系演算 QBE语言</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-482.png" alt="upload successful"></p>
-<h4 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h4><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-499.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-500.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-501.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-502.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-503.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-505.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-506.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-507.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-482.png" alt="upload successful"></p>
+<h4 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h4><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-499.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-500.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-501.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-502.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-503.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-505.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-506.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-507.png" alt="upload successful"></p>
 <ul>
 <li><strong>使用   ESCAPE   关键字定义转义符</strong>。在模式中，当转义符置于通配符之前时，该通配符就解释为普通字符。例如，要搜索在任意位置包含字符串   5%   的字符串，请使用：<br>WHERE   ColumnA   LIKE   ‘%5&#x2F;%%’   ESCAPE   ‘&#x2F;‘   即‘&#x2F;’为转义字符，第二个‘%’为普通字符，第一、第三个为通配符。</li>
 </ul>
 <h4 id="sql中的连接"><a href="#sql中的连接" class="headerlink" title="sql中的连接"></a>sql中的连接</h4><ul>
-<li>等值连接<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-508.png" alt="upload successful"></li>
+<li>等值连接<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-508.png" alt="upload successful"></li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-509.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-509.png" alt="upload successful"></p>
 <ul>
 <li>自身连接</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-510.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-510.png" alt="upload successful"></p>
 <ul>
 <li>外连接</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-511.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-511.png" alt="upload successful"></p>
 <ul>
 <li>多表连接</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-512.png" alt="upload successful"></p>
-<h4 id="嵌套查询"><a href="#嵌套查询" class="headerlink" title="嵌套查询"></a>嵌套查询</h4><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-513.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-512.png" alt="upload successful"></p>
+<h4 id="嵌套查询"><a href="#嵌套查询" class="headerlink" title="嵌套查询"></a>嵌套查询</h4><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-513.png" alt="upload successful"></p>
 <ul>
 <li>几种查询的方式：  </li>
-<li>1、带有in谓词的子查询<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-514.png" alt="upload successful"></li>
+<li>1带有in谓词的子查询<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-514.png" alt="upload successful"></li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-515.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-516.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-515.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-516.png" alt="upload successful"></p>
 <ul>
 <li>带有比较运算符的子查询</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images1/image-20220219213804821.png" alt="image-20220219213804821"></p>
-<p>先运行外层的sql语句，显示扫描到表x的一条记录，然后运行where语句，找到学号为x.sno的该学生所有成绩的平均值，然后外层的该cno对应的某门的grade大于内层的该同学的平均成绩，则显示出来，否则不显示该cno</p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-518.png" alt="upload successful"></p>
 <ul>
 <li>使用ANY和ALL谓词的子查询</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-519.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-520.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-521.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-519.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-520.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-521.png" alt="upload successful"></p>
 <ul>
 <li>使用带EXISTS谓词的子查询</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-522.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-523.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-524.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-522.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-523.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-524.png" alt="upload successful"></p>
 <ul>
-<li>查询数据库及格的学生的学号和成绩<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-517.png" alt="upload successful"></li>
+<li>查询数据库及格的学生的学号和成绩<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-517.png" alt="upload successful"></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/*方法一：查询数据库及格的学生的学号和成绩*/</span><br><span class="line">SELECT  Sno,Grade</span><br><span class="line">FROM    SC,Course</span><br><span class="line">WHERE   Grade&gt;=60 and Course.Cname=&#x27;数据库&#x27; and Course.Cno=SC.Cno ;</span><br><span class="line"></span><br><span class="line">/*方法二:</span><br><span class="line">select Sno,Grade</span><br><span class="line">from   SC</span><br><span class="line">where   Grade&gt;=60 and SC.Cno IN (</span><br><span class="line">	select Cno</span><br><span class="line">	from Course</span><br><span class="line">	where  </span><br><span class="line">	Cname = &#x27;数据库&#x27; </span><br><span class="line">	)</span><br><span class="line">;</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 
-<h4 id="集合查询"><a href="#集合查询" class="headerlink" title="集合查询"></a>集合查询</h4><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-586.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-587.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-588.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-589.png" alt="upload successful"></p>
+<h4 id="集合查询"><a href="#集合查询" class="headerlink" title="集合查询"></a>集合查询</h4><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-586.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-587.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-588.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-589.png" alt="upload successful"></p>
 <h4 id="数据的更新和空值的处理"><a href="#数据的更新和空值的处理" class="headerlink" title="数据的更新和空值的处理"></a>数据的更新和空值的处理</h4><ul>
-<li>插入数据<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-590.png" alt="upload successful"></li>
+<li>插入数据<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-590.png" alt="upload successful"></li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-591.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-592.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-591.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-592.png" alt="upload successful"></p>
 <ul>
 <li>修改数据</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-593.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-593.png" alt="upload successful"></p>
 <ul>
 <li>删除数据</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-594.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-594.png" alt="upload successful"></p>
 <ul>
 <li>空值的处理</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-665.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-666.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-667.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-665.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-666.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-667.png" alt="upload successful"></p>
 <h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><ul>
 <li>建立视图</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-669.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-670.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-671.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-669.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-670.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-671.png" alt="upload successful"></p>
 <ul>
 <li>删除视图</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-672.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-672.png" alt="upload successful"></p>
 <ul>
 <li>查询视图</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-673.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-674.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-673.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-674.png" alt="upload successful"></p>
 <ul>
 <li>更新视图</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-675.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-676.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-675.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-676.png" alt="upload successful"></p>
 <ul>
 <li>视图的作用</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-677.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-678.png" alt="upload successful"></p>
-<h4 id="数据库安全概述"><a href="#数据库安全概述" class="headerlink" title="数据库安全概述"></a>数据库安全概述</h4><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-679.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-677.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-678.png" alt="upload successful"></p>
+<h4 id="数据库安全概述"><a href="#数据库安全概述" class="headerlink" title="数据库安全概述"></a>数据库安全概述</h4><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-679.png" alt="upload successful"></p>
 <ul>
-<li>TCSEC&#x2F;TDI标准<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-680.png" alt="upload successful"></li>
+<li>TCSEC&#x2F;TDI标准<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-680.png" alt="upload successful"></li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-681.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-681.png" alt="upload successful"></p>
 <ul>
 <li>CC标准</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-682.png" alt="upload successful"></p>
-<h4 id="数据库安全控制"><a href="#数据库安全控制" class="headerlink" title="数据库安全控制"></a>数据库安全控制</h4><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-683.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-682.png" alt="upload successful"></p>
+<h4 id="数据库安全控制"><a href="#数据库安全控制" class="headerlink" title="数据库安全控制"></a>数据库安全控制</h4><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-683.png" alt="upload successful"></p>
 <ul>
-<li>用户身份鉴别<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-684.png" alt="upload successful"></li>
-<li>存取控制<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-685.png" alt="upload successful"></li>
+<li>用户身份鉴别<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-684.png" alt="upload successful"></li>
+<li>存取控制<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-685.png" alt="upload successful"></li>
 <li>自主存取控制</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-686.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-686.png" alt="upload successful"></p>
 <ul>
 <li>权限的授予</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-687.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-688.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-689.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-690.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-687.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-688.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-689.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-690.png" alt="upload successful"></p>
 <ul>
 <li>权限的回收</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-691.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-691.png" alt="upload successful"></p>
 <ul>
-<li>创建数据库模式的权限<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-692.png" alt="upload successful"></li>
+<li>创建数据库模式的权限<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-692.png" alt="upload successful"></li>
 <li>数据库的角色</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-693.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-694.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-693.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-694.png" alt="upload successful"></p>
 <ul>
-<li>强制存取控制方法<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-695.png" alt="upload successful"></li>
+<li>强制存取控制方法<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-695.png" alt="upload successful"></li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-696.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-697.png" alt="upload successful"></p>
-<h5 id="视图机制"><a href="#视图机制" class="headerlink" title="视图机制"></a>视图机制</h5><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-712.png" alt="upload successful"></p>
-<h5 id="审计"><a href="#审计" class="headerlink" title="审计"></a>审计</h5><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-713.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-714.png" alt="upload successful"></p>
-<h5 id="数据加密"><a href="#数据加密" class="headerlink" title="数据加密"></a>数据加密</h5><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-715.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-716.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-696.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-697.png" alt="upload successful"></p>
+<h5 id="视图机制"><a href="#视图机制" class="headerlink" title="视图机制"></a>视图机制</h5><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-712.png" alt="upload successful"></p>
+<h5 id="审计"><a href="#审计" class="headerlink" title="审计"></a>审计</h5><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-713.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-714.png" alt="upload successful"></p>
+<h5 id="数据加密"><a href="#数据加密" class="headerlink" title="数据加密"></a>数据加密</h5><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-715.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-716.png" alt="upload successful"></p>
 <h4 id="数据库完整性"><a href="#数据库完整性" class="headerlink" title="数据库完整性"></a>数据库完整性</h4><ul>
-<li>完整性简介<br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-717.png" alt="upload successful"></li>
+<li>完整性简介<br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-717.png" alt="upload successful"></li>
 <li>实体完整性</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-718.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-719.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-718.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-719.png" alt="upload successful"></p>
 <ul>
 <li>参照完整性规则</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-721.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-722.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-724.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-720.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-721.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-722.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-724.png" alt="upload successful"></p>
 <ul>
 <li>用户自定义约束</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-725.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-726.png" alt="upload successful"></p>
-<h4 id="约束命令子句和断言"><a href="#约束命令子句和断言" class="headerlink" title="约束命令子句和断言"></a>约束命令子句和断言</h4><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-727.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-728.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-729.png" alt="upload successful"></p>
-<h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4><p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-730.png" alt="upload successful"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-731.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-725.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-726.png" alt="upload successful"></p>
+<h4 id="约束命令子句和断言"><a href="#约束命令子句和断言" class="headerlink" title="约束命令子句和断言"></a>约束命令子句和断言</h4><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-727.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-728.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-729.png" alt="upload successful"></p>
+<h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4><p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-730.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-731.png" alt="upload successful"></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/f45056231p/article/details/81072819">new和old的使用</a></p>
 <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
 <li>组合主键<br>首先一个表是不能有两个主键的。但是可以有两个字段组合成一个主键，这就是为什么有时候表里为什么会有两个字段都有主键的标志，那是因为他们组合成了一个主键了。</li>
@@ -401,7 +400,7 @@
 
 
 <p>例如：</p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-732.png" alt="upload successful"><br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-735.png" alt="upload successful"><br><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/pasted-734.png" alt="upload successful"></p>
+<p><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-732.png" alt="upload successful"><br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-735.png" alt="upload successful"><br><img src="/zouyunkai/myblog/%5Caoyue%5Cimages%5Cpasted-734.png" alt="upload successful"></p>
 
       
 
@@ -436,7 +435,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/zouyunkai/myblog/2020/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%E4%B8%80/">展开全文 >></a>
+          <a class="article-more-a" href="/zouyunkai/myblog/2020/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/">展开全文 >></a>
         </p>
       
 
@@ -3163,6 +3162,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
@@ -3172,10 +3175,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c语言小知识</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3227,11 +3226,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">素数</a>
+                <a href="javascript:void(0)" class="js-tag color3">java se</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">java se</a>
+                <a href="javascript:void(0)" class="js-tag color3">素数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3295,19 +3294,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">训练</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">隐写</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">新生训练</a>
+                <a href="javascript:void(0)" class="js-tag color3">训练</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">2019校赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">新生训练</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3419,11 +3418,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">蓝桥杯算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">蓝桥杯算法</a>
               </li>
              
               <li class="article-tag-list-item">

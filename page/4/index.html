@@ -473,114 +473,6 @@
 
 
   
-    <article id="post-2021蓝桥杯最后几天刷题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/zouyunkai/myblog/2021/04/11/2021%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%9C%80%E5%90%8E%E5%87%A0%E5%A4%A9%E5%88%B7%E9%A2%98/">2021 蓝桥杯最后几天刷题</a>
-    </h1>
-  
-
-        
-        <a href="/zouyunkai/myblog/2021/04/11/2021%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%9C%80%E5%90%8E%E5%87%A0%E5%A4%A9%E5%88%B7%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2021-04-11T14:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="acwing-2067走方格"><a href="#acwing-2067走方格" class="headerlink" title="acwing 2067走方格"></a>acwing 2067走方格</h4><p>注意矩阵输入的时候为第一行 ，第二行…第n行输入的，所以对应着n行m列的二维矩阵，就是从上往下输入，<strong>左上角为坐标原点，所以遍历的时候注意下面的坐标比上面的坐标值大，这一题中坐标（x，y）到右下角的时候应该等于（m，n），即x到达了第m列，y到达了第n行。注意：矩阵的xy坐标表示（x，y）和矩阵的n行m列的[n，m]表示不同,移动的时候多用前者，访问的时候多用后者。</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">超时的写法：</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> dx[<span class="number">2</span>]=&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,dy[<span class="number">2</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>&#125;;<span class="comment">//这里左上方为零点</span></span><br><span class="line"><span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="comment">//cout&lt;&lt;&quot;current dfs:&quot;&lt;&lt;x&lt;&lt;&quot; &quot;&lt;&lt;y&lt;&lt;endl;</span></span><br><span class="line">	<span class="keyword">if</span>(x==m&amp;&amp;y==n)&#123;  <span class="comment">//这里误写为x==n&amp;&amp;y==m了！！！ </span></span><br><span class="line">		ans++;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">		<span class="type">int</span> newx=x+dx[i],newy=y+dy[i];</span><br><span class="line">		<span class="keyword">if</span>((newx%<span class="number">2</span>==<span class="number">0</span>)&amp;&amp;(newy%<span class="number">2</span>==<span class="number">0</span>))<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(newx&lt;=m&amp;&amp;newy&lt;=n)&#123;</span><br><span class="line">			<span class="built_in">dfs</span>(newx,newy);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">记忆化递归：</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> f[<span class="number">40</span>][<span class="number">40</span>];</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	f[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;  <span class="comment">//表示矩阵的第i行，第m列 【i，j】 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;  <span class="comment">//这里的for不能从2开始，不然的话会遗漏(1,2)和(2,1)两个格子 </span></span><br><span class="line">			<span class="keyword">if</span>(i&amp;<span class="number">1</span>||j&amp;<span class="number">1</span>)f[i][j]=f[i][j]+f[i<span class="number">-1</span>][j]+f[i][j<span class="number">-1</span>]; <span class="comment">//f[i-1][j]在xy坐标中表示y-1，即本格上方的那个格子</span></span><br><span class="line">			<span class="keyword">else</span> f[i][j]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	cout&lt;&lt;f[n][m]&lt;&lt;endl; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h4 id="蛇形序列（十一届真题）"><a href="#蛇形序列（十一届真题）" class="headerlink" title="蛇形序列（十一届真题）"></a>蛇形序列（十一届真题）</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> step=<span class="number">4</span>;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">19</span>;i++)&#123;</span><br><span class="line">		ans+=step;  <span class="comment">//模拟数列求和，这里累加每一步之间的长度的时候，ans+=要在step上面 </span></span><br><span class="line">		step+=<span class="number">4</span>;<span class="comment">//因为第一次进入for循环没有改变step的时候ans就要先加上一次step </span></span><br><span class="line">	&#125; </span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	<span class="comment">//或者直接通过等差数列求和  来算答案 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h4 id="跑步训练"><a href="#跑步训练" class="headerlink" title="跑步训练"></a>跑步训练</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> ryue[<span class="number">13</span>]=&#123;<span class="number">0</span>,<span class="number">31</span>,<span class="number">29</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line"><span class="type">int</span> byue[<span class="number">13</span>]=&#123;<span class="number">0</span>,<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;a%<span class="number">100</span>!=<span class="number">0</span>||a%<span class="number">400</span>==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> 	<span class="type">int</span> year=<span class="number">2000</span>,m=<span class="number">1</span>,d=<span class="number">1</span>,dd=<span class="number">6</span>;</span><br><span class="line"> 	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line"> 		<span class="keyword">if</span>(year==<span class="number">2020</span>&amp;&amp;m==<span class="number">10</span>&amp;&amp;d==<span class="number">2</span>)<span class="keyword">break</span>;</span><br><span class="line"> 		<span class="keyword">if</span>(d==<span class="number">1</span>||dd==<span class="number">1</span>)ans+=<span class="number">2</span>;</span><br><span class="line"> 		<span class="keyword">else</span> ans+=<span class="number">1</span>;</span><br><span class="line"> 		dd+=<span class="number">1</span>;</span><br><span class="line"> 		dd%=<span class="number">7</span>;</span><br><span class="line"> 		<span class="keyword">if</span>(<span class="built_in">get</span>(year))&#123;  <span class="comment">//是闰年 </span></span><br><span class="line"> 			<span class="keyword">if</span>(ryue[m]==d)&#123;</span><br><span class="line"> 				d=<span class="number">1</span>;</span><br><span class="line">				m++;	</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				d++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(m==<span class="number">13</span>)&#123;</span><br><span class="line">				year++;</span><br><span class="line">				m=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(byue[m]==d)&#123;</span><br><span class="line"> 				d=<span class="number">1</span>;</span><br><span class="line">				m++;	</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				d++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(m==<span class="number">13</span>)&#123;</span><br><span class="line">				year++;</span><br><span class="line">				m=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"> 	</span><br><span class="line">	 &#125;</span><br><span class="line">	 cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">ans=<span class="number">8879</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="原码-反码-补码的基础概念和计算方法"><a href="#原码-反码-补码的基础概念和计算方法" class="headerlink" title="原码, 反码, 补码的基础概念和计算方法."></a>原码, 反码, 补码的基础概念和计算方法.</h4><p>1、源码</p>
-<p>原码就是符号位加上真值的绝对值, 即用第一位表示符号, 其余位表示值. 比如如果是8位二进制:</p>
-<blockquote>
-<p>[+1]原 &#x3D; 0000 0001</p>
-<p>[-1]原 &#x3D; 1000 0001</p>
-</blockquote>
-<p>2、反码的表示方法是:</p>
-<p>正数的反码是其本身</p>
-<p>负数的反码是在其原码的基础上, 符号位不变，其余各个位取反.</p>
-<blockquote>
-<p>[+1] &#x3D; [00000001]原 &#x3D; [00000001]反</p>
-<p>[-1] &#x3D; [10000001]原 &#x3D; [11111110]反</p>
-</blockquote>
-<p>3、补码的表示方法是:</p>
-<p>正数的补码就是其本身</p>
-<p>负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
-<blockquote>
-<p>[+1] &#x3D; [00000001]原 &#x3D; [00000001]反 &#x3D; [00000001]补</p>
-<p>[-1] &#x3D; [10000001]原 &#x3D; [11111110]反 &#x3D; [11111111]补</p>
-</blockquote>
-<p>根据运算法则减去一个正数等于加上一个负数, 即: 1-1 &#x3D; 1 + (-1) &#x3D; 0 , 所以机器可以只有加法而没有减法, 这样计算机运算的设计就更简单了.</p>
-<p>例：[x]原&#x3D;+1101,[y]原&#x3D;-1010, [x]原+[y]原&#x3D;<br> 数值位做减法运算，[y]数值位求补，得0110,与1101做加法。 0110+1101&#x3D;1,0011，最高数值位产生了进位，因此结果正确，符号位取[x]原的符号，得+0011。</p>
-<h4 id="当发现自己的做法肯定是对的，但是和题目的结果不同的时候，想是不是自己忽略了啥问题"><a href="#当发现自己的做法肯定是对的，但是和题目的结果不同的时候，想是不是自己忽略了啥问题" class="headerlink" title="当发现自己的做法肯定是对的，但是和题目的结果不同的时候，想是不是自己忽略了啥问题"></a>当发现自己的做法肯定是对的，但是和题目的结果不同的时候，想是不是自己忽略了啥问题</h4><p>如：数值序列这题</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> a=<span class="number">1</span>,b=<span class="number">1</span>,c=<span class="number">1</span>,d=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">long</span> <span class="type">long</span> i=<span class="number">4</span>;i&lt;=<span class="number">20190324</span>;i++)&#123;</span><br><span class="line">		d=a+b+c;</span><br><span class="line">		a=b;a%=<span class="number">10000</span>;</span><br><span class="line">		b=c;b%=<span class="number">10000</span>;</span><br><span class="line">		c=d;c%=<span class="number">10000</span>;</span><br><span class="line">		d%=<span class="number">10000</span>;</span><br><span class="line">	<span class="comment">//我忽略了数值会爆long long，溢出这一点，所以要每次加之前都取模一下	</span></span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;d&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h4 id="数的分解"><a href="#数的分解" class="headerlink" title="数的分解"></a>数的分解</h4><p>这里我忘记了 i，j，k不能算2,4这几种情况。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">set&lt;vector&lt;<span class="type">int</span>&gt; &gt;st;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> </span>&#123;	<span class="comment">//判断三个正整数中是否含2或4 </span></span><br><span class="line">	<span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (x) &#123;</span><br><span class="line">		res = x % <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span> (res == <span class="number">2</span> || res == <span class="number">4</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		x /= <span class="number">10</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">while</span> (y) &#123;</span><br><span class="line">		res = y % <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span> (res == <span class="number">2</span> || res == <span class="number">4</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		y /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (z) &#123;</span><br><span class="line">		res = z % <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span> (res == <span class="number">2</span> || res == <span class="number">4</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		z /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	struct node node1,node2;</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">2019</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;<span class="number">2019</span>;j++)&#123;  <span class="comment">//这里j直接从i的下一位开始枚举就行，因为这里要求的是三个不相同的数</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> k=j+<span class="number">1</span>;k&lt;<span class="number">2019</span>;k++)&#123;</span><br><span class="line">				<span class="keyword">if</span>((i+j+k)==<span class="number">2019</span>&amp;&amp;<span class="built_in">check</span>(i,j,k))&#123;</span><br><span class="line">                    <span class="comment">//注意枚举的条件</span></span><br><span class="line">					vector&lt;<span class="type">int</span>&gt;vt1; </span><br><span class="line">					vt1.<span class="built_in">push_back</span>(i);</span><br><span class="line">					vt1.<span class="built_in">push_back</span>(j);</span><br><span class="line">					vt1.<span class="built_in">push_back</span>(k);</span><br><span class="line">					st.<span class="built_in">insert</span>(vt1); </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout&lt;&lt;st.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/zouyunkai/myblog/categories/acwing//" class="article-tag-list-link color2">acwing</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/zouyunkai/myblog/2021/04/11/2021%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%9C%80%E5%90%8E%E5%87%A0%E5%A4%A9%E5%88%B7%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-2021蓝桥杯备战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -877,6 +769,114 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/zouyunkai/myblog/2021/04/11/2021%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E6%88%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2021蓝桥杯最后几天刷题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/zouyunkai/myblog/2021/04/11/2021%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%9C%80%E5%90%8E%E5%87%A0%E5%A4%A9%E5%88%B7%E9%A2%98/">2021 蓝桥杯最后几天刷题</a>
+    </h1>
+  
+
+        
+        <a href="/zouyunkai/myblog/2021/04/11/2021%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%9C%80%E5%90%8E%E5%87%A0%E5%A4%A9%E5%88%B7%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-04-11T14:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="acwing-2067走方格"><a href="#acwing-2067走方格" class="headerlink" title="acwing 2067走方格"></a>acwing 2067走方格</h4><p>注意矩阵输入的时候为第一行 ，第二行…第n行输入的，所以对应着n行m列的二维矩阵，就是从上往下输入，<strong>左上角为坐标原点，所以遍历的时候注意下面的坐标比上面的坐标值大，这一题中坐标（x，y）到右下角的时候应该等于（m，n），即x到达了第m列，y到达了第n行。注意：矩阵的xy坐标表示（x，y）和矩阵的n行m列的[n，m]表示不同,移动的时候多用前者，访问的时候多用后者。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">超时的写法：</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> dx[<span class="number">2</span>]=&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,dy[<span class="number">2</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>&#125;;<span class="comment">//这里左上方为零点</span></span><br><span class="line"><span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="comment">//cout&lt;&lt;&quot;current dfs:&quot;&lt;&lt;x&lt;&lt;&quot; &quot;&lt;&lt;y&lt;&lt;endl;</span></span><br><span class="line">	<span class="keyword">if</span>(x==m&amp;&amp;y==n)&#123;  <span class="comment">//这里误写为x==n&amp;&amp;y==m了！！！ </span></span><br><span class="line">		ans++;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">		<span class="type">int</span> newx=x+dx[i],newy=y+dy[i];</span><br><span class="line">		<span class="keyword">if</span>((newx%<span class="number">2</span>==<span class="number">0</span>)&amp;&amp;(newy%<span class="number">2</span>==<span class="number">0</span>))<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(newx&lt;=m&amp;&amp;newy&lt;=n)&#123;</span><br><span class="line">			<span class="built_in">dfs</span>(newx,newy);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">记忆化递归：</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> f[<span class="number">40</span>][<span class="number">40</span>];</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	f[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;  <span class="comment">//表示矩阵的第i行，第m列 【i，j】 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;  <span class="comment">//这里的for不能从2开始，不然的话会遗漏(1,2)和(2,1)两个格子 </span></span><br><span class="line">			<span class="keyword">if</span>(i&amp;<span class="number">1</span>||j&amp;<span class="number">1</span>)f[i][j]=f[i][j]+f[i<span class="number">-1</span>][j]+f[i][j<span class="number">-1</span>]; <span class="comment">//f[i-1][j]在xy坐标中表示y-1，即本格上方的那个格子</span></span><br><span class="line">			<span class="keyword">else</span> f[i][j]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	cout&lt;&lt;f[n][m]&lt;&lt;endl; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="蛇形序列（十一届真题）"><a href="#蛇形序列（十一届真题）" class="headerlink" title="蛇形序列（十一届真题）"></a>蛇形序列（十一届真题）</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> step=<span class="number">4</span>;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">19</span>;i++)&#123;</span><br><span class="line">		ans+=step;  <span class="comment">//模拟数列求和，这里累加每一步之间的长度的时候，ans+=要在step上面 </span></span><br><span class="line">		step+=<span class="number">4</span>;<span class="comment">//因为第一次进入for循环没有改变step的时候ans就要先加上一次step </span></span><br><span class="line">	&#125; </span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	<span class="comment">//或者直接通过等差数列求和  来算答案 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="跑步训练"><a href="#跑步训练" class="headerlink" title="跑步训练"></a>跑步训练</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> ryue[<span class="number">13</span>]=&#123;<span class="number">0</span>,<span class="number">31</span>,<span class="number">29</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line"><span class="type">int</span> byue[<span class="number">13</span>]=&#123;<span class="number">0</span>,<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;a%<span class="number">100</span>!=<span class="number">0</span>||a%<span class="number">400</span>==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> 	<span class="type">int</span> year=<span class="number">2000</span>,m=<span class="number">1</span>,d=<span class="number">1</span>,dd=<span class="number">6</span>;</span><br><span class="line"> 	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line"> 		<span class="keyword">if</span>(year==<span class="number">2020</span>&amp;&amp;m==<span class="number">10</span>&amp;&amp;d==<span class="number">2</span>)<span class="keyword">break</span>;</span><br><span class="line"> 		<span class="keyword">if</span>(d==<span class="number">1</span>||dd==<span class="number">1</span>)ans+=<span class="number">2</span>;</span><br><span class="line"> 		<span class="keyword">else</span> ans+=<span class="number">1</span>;</span><br><span class="line"> 		dd+=<span class="number">1</span>;</span><br><span class="line"> 		dd%=<span class="number">7</span>;</span><br><span class="line"> 		<span class="keyword">if</span>(<span class="built_in">get</span>(year))&#123;  <span class="comment">//是闰年 </span></span><br><span class="line"> 			<span class="keyword">if</span>(ryue[m]==d)&#123;</span><br><span class="line"> 				d=<span class="number">1</span>;</span><br><span class="line">				m++;	</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				d++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(m==<span class="number">13</span>)&#123;</span><br><span class="line">				year++;</span><br><span class="line">				m=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(byue[m]==d)&#123;</span><br><span class="line"> 				d=<span class="number">1</span>;</span><br><span class="line">				m++;	</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				d++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(m==<span class="number">13</span>)&#123;</span><br><span class="line">				year++;</span><br><span class="line">				m=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"> 	</span><br><span class="line">	 &#125;</span><br><span class="line">	 cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">ans=<span class="number">8879</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="原码-反码-补码的基础概念和计算方法"><a href="#原码-反码-补码的基础概念和计算方法" class="headerlink" title="原码, 反码, 补码的基础概念和计算方法."></a>原码, 反码, 补码的基础概念和计算方法.</h4><p>1、源码</p>
+<p>原码就是符号位加上真值的绝对值, 即用第一位表示符号, 其余位表示值. 比如如果是8位二进制:</p>
+<blockquote>
+<p>[+1]原 &#x3D; 0000 0001</p>
+<p>[-1]原 &#x3D; 1000 0001</p>
+</blockquote>
+<p>2、反码的表示方法是:</p>
+<p>正数的反码是其本身</p>
+<p>负数的反码是在其原码的基础上, 符号位不变，其余各个位取反.</p>
+<blockquote>
+<p>[+1] &#x3D; [00000001]原 &#x3D; [00000001]反</p>
+<p>[-1] &#x3D; [10000001]原 &#x3D; [11111110]反</p>
+</blockquote>
+<p>3、补码的表示方法是:</p>
+<p>正数的补码就是其本身</p>
+<p>负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
+<blockquote>
+<p>[+1] &#x3D; [00000001]原 &#x3D; [00000001]反 &#x3D; [00000001]补</p>
+<p>[-1] &#x3D; [10000001]原 &#x3D; [11111110]反 &#x3D; [11111111]补</p>
+</blockquote>
+<p>根据运算法则减去一个正数等于加上一个负数, 即: 1-1 &#x3D; 1 + (-1) &#x3D; 0 , 所以机器可以只有加法而没有减法, 这样计算机运算的设计就更简单了.</p>
+<p>例：[x]原&#x3D;+1101,[y]原&#x3D;-1010, [x]原+[y]原&#x3D;<br> 数值位做减法运算，[y]数值位求补，得0110,与1101做加法。 0110+1101&#x3D;1,0011，最高数值位产生了进位，因此结果正确，符号位取[x]原的符号，得+0011。</p>
+<h4 id="当发现自己的做法肯定是对的，但是和题目的结果不同的时候，想是不是自己忽略了啥问题"><a href="#当发现自己的做法肯定是对的，但是和题目的结果不同的时候，想是不是自己忽略了啥问题" class="headerlink" title="当发现自己的做法肯定是对的，但是和题目的结果不同的时候，想是不是自己忽略了啥问题"></a>当发现自己的做法肯定是对的，但是和题目的结果不同的时候，想是不是自己忽略了啥问题</h4><p>如：数值序列这题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> a=<span class="number">1</span>,b=<span class="number">1</span>,c=<span class="number">1</span>,d=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">long</span> <span class="type">long</span> i=<span class="number">4</span>;i&lt;=<span class="number">20190324</span>;i++)&#123;</span><br><span class="line">		d=a+b+c;</span><br><span class="line">		a=b;a%=<span class="number">10000</span>;</span><br><span class="line">		b=c;b%=<span class="number">10000</span>;</span><br><span class="line">		c=d;c%=<span class="number">10000</span>;</span><br><span class="line">		d%=<span class="number">10000</span>;</span><br><span class="line">	<span class="comment">//我忽略了数值会爆long long，溢出这一点，所以要每次加之前都取模一下	</span></span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;d&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="数的分解"><a href="#数的分解" class="headerlink" title="数的分解"></a>数的分解</h4><p>这里我忘记了 i，j，k不能算2,4这几种情况。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">set&lt;vector&lt;<span class="type">int</span>&gt; &gt;st;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> </span>&#123;	<span class="comment">//判断三个正整数中是否含2或4 </span></span><br><span class="line">	<span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (x) &#123;</span><br><span class="line">		res = x % <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span> (res == <span class="number">2</span> || res == <span class="number">4</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		x /= <span class="number">10</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">while</span> (y) &#123;</span><br><span class="line">		res = y % <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span> (res == <span class="number">2</span> || res == <span class="number">4</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		y /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (z) &#123;</span><br><span class="line">		res = z % <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span> (res == <span class="number">2</span> || res == <span class="number">4</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		z /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	struct node node1,node2;</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">2019</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;<span class="number">2019</span>;j++)&#123;  <span class="comment">//这里j直接从i的下一位开始枚举就行，因为这里要求的是三个不相同的数</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> k=j+<span class="number">1</span>;k&lt;<span class="number">2019</span>;k++)&#123;</span><br><span class="line">				<span class="keyword">if</span>((i+j+k)==<span class="number">2019</span>&amp;&amp;<span class="built_in">check</span>(i,j,k))&#123;</span><br><span class="line">                    <span class="comment">//注意枚举的条件</span></span><br><span class="line">					vector&lt;<span class="type">int</span>&gt;vt1; </span><br><span class="line">					vt1.<span class="built_in">push_back</span>(i);</span><br><span class="line">					vt1.<span class="built_in">push_back</span>(j);</span><br><span class="line">					vt1.<span class="built_in">push_back</span>(k);</span><br><span class="line">					st.<span class="built_in">insert</span>(vt1); </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout&lt;&lt;st.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/zouyunkai/myblog/categories/acwing//" class="article-tag-list-link color2">acwing</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/zouyunkai/myblog/2021/04/11/2021%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%9C%80%E5%90%8E%E5%87%A0%E5%A4%A9%E5%88%B7%E9%A2%98/">展开全文 >></a>
         </p>
       
 
@@ -1716,6 +1716,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
@@ -1725,10 +1729,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c语言小知识</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1780,11 +1780,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">素数</a>
+                <a href="javascript:void(0)" class="js-tag color3">java se</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">java se</a>
+                <a href="javascript:void(0)" class="js-tag color3">素数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1848,19 +1848,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">训练</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">隐写</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">新生训练</a>
+                <a href="javascript:void(0)" class="js-tag color3">训练</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">2019校赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">新生训练</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1972,11 +1972,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">蓝桥杯算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">蓝桥杯算法</a>
               </li>
              
               <li class="article-tag-list-item">
