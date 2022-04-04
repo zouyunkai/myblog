@@ -25,16 +25,16 @@
 <meta property="og:site_name" content="Sweet@">
 <meta property="og:description" content="一、前言本次题解会教你如何通过vagrant安装好ubuntu系统，并配置好和hadoop相关的环境。 署名 ：软工18-1 邹庆志 前置知识：  何为vagrant vagrant是一个工具，用于简化创建和部署虚拟化开发环境。 拿VirtualBox举例，VirtualBox会开放一个创建虚拟机的接口，Vagrant会利用这个接口创建虚拟机，并且通过Vagrant来管理，配置和自动安装虚拟机。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210316110655298.png">
-<meta property="og:image" content="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210316112456079.png">
-<meta property="og:image" content="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210316112700455.png">
-<meta property="og:image" content="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210316112938950.png">
-<meta property="og:image" content="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210320190149570.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210316110655298.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210316112456079.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210316112700455.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210316112938950.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210320190149570.png">
 <meta property="article:published_time" content="2021-03-15T14:01:00.000Z">
-<meta property="article:modified_time" content="2022-02-26T03:27:00.594Z">
+<meta property="article:modified_time" content="2022-04-03T13:18:46.393Z">
 <meta property="article:author" content="zouqingzhi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210316110655298.png">
+<meta name="twitter:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210316110655298.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://zouyunkai.github.io/myblog/2021/03/15/%E4%BD%BF%E7%94%A8vagrant%E5%92%8Cvirtualbox%E6%9D%A5%E9%85%8D%E7%BD%AEhadoop%E7%8E%AF%E5%A2%83/index.html">
   
@@ -64,7 +64,7 @@
           <img class="img-circle img-rotate" src="/myblog/images/avatar.jpg" width="200" height="200">
         </a>
         <h2 id="name" class="hidden-xs hidden-sm">云开</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Stay Hungry , Stay Foolish.</h3>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Stay Hungry , Stay Foolish .</h3>
         <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
       </div>
       
@@ -101,7 +101,7 @@
       </button>
     </div>
     <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+      <ul class="nav navbar-nav main-nav menu-highlight">
         
         
         <li class="menu-item menu-item-home">
@@ -210,6 +210,36 @@
             
             <div class="item-inner">
               <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E6%89%80%E9%95%BF%E7%9A%84%E8%B7%A8%E5%AD%A6%E7%A7%91%E5%B7%A5%E5%85%B7%E7%AE%B1/">所长的跨学科工具箱</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/04/12%E6%A6%82%E7%8E%87%E6%80%9D%E7%BB%B4/" class="title">概率思维—把握不确定性</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-04T13:29:00.000Z" itemprop="datePublished">2022-04-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E6%9D%82%E8%AE%B0/">杂记</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/03/%E5%85%B3%E4%BA%8E%E8%80%83%E7%A0%94%E6%88%91%E6%83%B3%E8%AF%B4%E7%9A%84/" class="title">关于考研</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-03T07:29:00.000Z" itemprop="datePublished">2022-04-03</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
                 <a class="category-link" href="/myblog/categories/%E9%9D%A2%E8%AF%95/">面试</a>
               </p>
               <p class="item-title">
@@ -244,36 +274,6 @@
               </p>
               <p class="item-title">
                 <a href="/myblog/2022/01/19/01%E6%A8%A1%E6%9D%BF/" class="title">脑科学重要模型</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-01-19T13:29:00.000Z" itemprop="datePublished">2022-01-19</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/myblog/categories/%E6%89%80%E9%95%BF%E7%9A%84%E8%B7%A8%E5%AD%A6%E7%A7%91%E5%B7%A5%E5%85%B7%E7%AE%B1/">所长的跨学科工具箱</a>
-              </p>
-              <p class="item-title">
-                <a href="/myblog/2022/01/19/01%E7%86%B5%E4%B8%8E%E7%83%AD%E5%8A%9B%E5%AD%A6%E9%87%8D%E8%A6%81%E6%A8%A1%E5%9E%8B/" class="title">熵增定理-世界演化之道</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-01-19T13:29:00.000Z" itemprop="datePublished">2022-01-19</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/myblog/categories/%E6%89%80%E9%95%BF%E7%9A%84%E8%B7%A8%E5%AD%A6%E7%A7%91%E5%B7%A5%E5%85%B7%E7%AE%B1/">所长的跨学科工具箱</a>
-              </p>
-              <p class="item-title">
-                <a href="/myblog/2022/01/19/02%E7%B3%BB%E7%BB%9F%E8%AE%BA%E9%87%8D%E8%A6%81%E6%A8%A1%E5%9E%8B/" class="title">系统思维 - 深刻认识世界</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-01-19T13:29:00.000Z" itemprop="datePublished">2022-01-19</time>
@@ -334,6 +334,13 @@
 
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/myblog/2021/03/15/%E4%BD%BF%E7%94%A8vagrant%E5%92%8Cvirtualbox%E6%9D%A5%E9%85%8D%E7%BD%AEhadoop%E7%8E%AF%E5%A2%83/#comments" class="article-comment-link">评论</a></span>
         
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.7k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 15(分)</span>
+	
+
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
@@ -355,7 +362,7 @@
 </ul>
 <h4 id="二、环境搭建-安装vagrant和virtualBox"><a href="#二、环境搭建-安装vagrant和virtualBox" class="headerlink" title="二、环境搭建 安装vagrant和virtualBox"></a>二、环境搭建 安装vagrant和virtualBox</h4><p>1、<strong>vagrant</strong>一定要安装在系统盘中，不然好像不能使用的，vagrant的安装包：<a target="_blank" rel="noopener" href="https://download.csdn.net/download/aoyuehanzhi/12643794?spm=1001.2014.3001.5501%E3%80%82">https://download.csdn.net/download/aoyuehanzhi/12643794?spm=1001.2014.3001.5501。</a></p>
 <p>2、virtualBox可以安装在非系统盘，然后记得初始化virtualBox镜像存在的位置，这样镜像就不会存在系统盘里了，如下图所示：</p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210316110655298.png" alt="image-20210316110655298"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210316110655298.png" alt="image-20210316110655298"></p>
 <p>这里我用的virtualbox的版本是6.0，是可以适配的</p>
 <h4 id="三、通过vagrant安装ubuntu系统"><a href="#三、通过vagrant安装ubuntu系统" class="headerlink" title="三、通过vagrant安装ubuntu系统"></a>三、通过vagrant安装ubuntu系统</h4><p>vagrant的相关语法介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38423105/article/details/85253829?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control">https://blog.csdn.net/qq_38423105/article/details/85253829?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control</a></p>
 <p>Vagrant 常用命令清单</p>
@@ -381,13 +388,13 @@ vagrant global-status 查看当前 vagrant 管理的所有 vm 信息
 
 <p>2、通过Vagrantfile文件配置安装虚拟机到virtualBox中</p>
 <p>输入vagrant up ubuntu来初始化虚拟机，如下图：</p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210316112456079.png" alt="image-20210316112456079"></p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210316112700455.png" alt="image-20210316112700455"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210316112456079.png" alt="image-20210316112456079"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210316112700455.png" alt="image-20210316112700455"></p>
 <p>3、连接到虚拟机</p>
 <ul>
 <li>命令行中输入vagrant ssh ubuntu，通过ssh连接到虚拟机</li>
 </ul>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210316112938950.png" alt="image-20210316112938950"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210316112938950.png" alt="image-20210316112938950"></p>
 <ul>
 <li><p>除了通过windows的shell来连接虚拟机之外，也可以通过xshell等工具来连接</p>
 <p>虚拟机的用户名密码默都为vagrant，主机地址就是配置文件中ubuntu.vm.network :private_network, ip: “192.168.56.11”</p>
@@ -439,7 +446,7 @@ vagrant global-status 查看当前 vagrant 管理的所有 vm 信息
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">./bin/hdfs dfs -mkdir -p /user/vagrant长度</span><br><span class="line"></span><br><span class="line">接着将 ./etc/hadoop 中的 xml 文件作为输入文件复制到分布式文件系统中，即将 /usr/local/hadoop/etc/hadoop 复制到分布式文件系统中的 /user/vagrant/input 中。我们使用的是 vagrant 用户，并且已创建相应的用户目录 /user/vagrant ，因此在命令中就可以使用相对路径如 input，其对应的绝对路径就是 /user/vagrant/input:</span><br><span class="line"></span><br><span class="line">./bin/hdfs dfs -mkdir input</span><br><span class="line">./bin/hdfs dfs -put ./etc/hadoop/*.xml input</span><br><span class="line"></span><br><span class="line">复制完成后，可以通过如下命令查看文件列表：</span><br><span class="line">./bin/hdfs dfs -ls input</span><br><span class="line"></span><br><span class="line">伪分布式运行 MapReduce 作业的方式跟单机模式相同，区别在于伪分布式读取的是HDFS中的文件（可以将单机步骤中创建的本地 input 文件夹，输出结果 output 文件夹都删掉来验证这一点）。</span><br><span class="line"></span><br><span class="line">./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar grep input output &#x27;dfs[a-z.]+&#x27;</span><br><span class="line"></span><br><span class="line">查看运行结果的命令（查看的是位于 HDFS 中的输出结果）：</span><br><span class="line">./bin/hdfs dfs -cat output/*</span><br><span class="line"></span><br><span class="line">我们也可以将运行结果取回到本地：</span><br><span class="line">rm -r ./output    # 先删除本地的 output 文件夹（如果存在）</span><br><span class="line">./bin/hdfs dfs -get output ./output     # 将 HDFS 上的 output 文件夹拷贝到本机</span><br><span class="line">cat ./output/*</span><br><span class="line"></span><br><span class="line">Hadoop 运行程序时，输出目录不能存在，否则会提示错误 “org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory hdfs://localhost:9000/user/hadoop/output already exists” ，因此若要再次执行，需要执行如下命令删除 output 文件夹:</span><br><span class="line">./bin/hdfs dfs -rm -r output    # 删除 output 文件夹</span><br><span class="line"></span><br><span class="line">若要关闭 Hadoop，则运行</span><br><span class="line">./sbin/stop-dfs.sh</span><br></pre></td></tr></table></figure>
 
 <p>通过.&#x2F;share&#x2F;hadoop&#x2F;mapreduce&#x2F;hadoop-mapreduce-examples-*.jar 来计算input文件夹下文件中单词以dfs开头的单词，运行截图如下：</p>
-<p><img src="https://gitee.com/aoyuehanzhi/blogpic/raw/master/images/image-20210320190149570.png" alt="image-20210320190149570"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/image-20210320190149570.png" alt="image-20210320190149570"></p>
 <h5 id="遇到的问题如下："><a href="#遇到的问题如下：" class="headerlink" title="遇到的问题如下："></a>遇到的问题如下：</h5><ul>
 <li><p>通过在hadoop的安装目录下运行.&#x2F;bin&#x2F;hdfs dfs 等命令的时候 都是调用hadoop上的hdfs命令；如果使用rm -r .&#x2F;output命令删除本地的文件夹output。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. hadoop fs</span><br><span class="line">2. hadoop dfs</span><br><span class="line">3. hdfs dfs</span><br><span class="line"></span><br><span class="line">hadoop fs适用于任何不同的文件系统，比如本地文件系统和HDFS文件系统</span><br><span class="line">hadoop dfs只能适用于HDFS文件系统</span><br><span class="line">hdfs dfs跟hadoop dfs的命令作用一样，也只能适用于HDFS文件系统</span><br></pre></td></tr></table></figure>
@@ -485,8 +492,8 @@ vagrant global-status 查看当前 vagrant 管理的所有 vm 信息
         </a>
       </div>
       <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/zouyunkai" target="_blank"><span class="text-dark">云开</span><small class="ml-1x">Stay Hungry , Stay Foolish.</small></a></h3>
-        <div>Stay Hungry , Stay Foolish.</div>
+        <h3 class="media-heading"><a href="https://github.com/zouyunkai" target="_blank"><span class="text-dark">云开</span><small class="ml-1x">Stay Hungry , Stay Foolish .</small></a></h3>
+        <div>when the facts change , I change my mind .</div>
       </div>
     </figure>
   </div>
@@ -642,16 +649,6 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
-    <script>
-(function ($) {
-    $('.search-form').on('submit', function (e) {
-        var keyword = $('.search-form-input[name="wd"]').val();
-        window.location = 'https://www.baidu.com/s?wd=site:zouyunkai.github.io/myblog ' + keyword;
-        return false;
-    });
-})(jQuery);
-</script>
-
 
 
 
@@ -677,7 +674,7 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     appId: '9f5iImvmYajPaJ79pRkbVNU9-gzGzoHsz',
     appKey: 'n3qUzkAGTOqjKi9k5LKGLfgV',
     placeholder: 'Just go go',
-    avatar: 'mm',
+    avatar: 'wavatar',
     meta: meta,
     pageSize: '10' || 10,
     visitor: false
