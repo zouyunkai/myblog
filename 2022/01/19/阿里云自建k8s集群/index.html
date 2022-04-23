@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>阿里云自建k8s集群 | Sweet@</title>
+  <meta name="description" content="阿里云ecs实例安装k8s安装kubesphere当ecs重启之后出现ks-ks-account一直Init:0&#x2F;2；并且ks-apigateway一直CrashLoopBackOff 先启动master节点，在master中删除其他从节点，从节点重新加入k8s的master节点中  12345678910111213141516171819202122232425# 首先驱逐要删除节点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云自建k8s集群">
+<meta property="og:url" content="https://zouyunkai.github.io/myblog/2022/01/19/%E9%98%BF%E9%87%8C%E4%BA%91%E8%87%AA%E5%BB%BAk8s%E9%9B%86%E7%BE%A4/index.html">
+<meta property="og:site_name" content="Sweet@">
+<meta property="og:description" content="阿里云ecs实例安装k8s安装kubesphere当ecs重启之后出现ks-ks-account一直Init:0&#x2F;2；并且ks-apigateway一直CrashLoopBackOff 先启动master节点，在master中删除其他从节点，从节点重新加入k8s的master节点中  12345678910111213141516171819202122232425# 首先驱逐要删除节点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220407212010571.png">
+<meta property="article:published_time" content="2022-01-19T13:29:00.000Z">
+<meta property="article:modified_time" content="2022-04-09T09:53:32.097Z">
+<meta property="article:author" content="zouqingzhi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220407212010571.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zouyunkai.github.io/myblog/2022/01/19/%E9%98%BF%E9%87%8C%E4%BA%91%E8%87%AA%E5%BB%BAk8s%E9%9B%86%E7%BE%A4/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Sweet@" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/myblog/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/zouyunkai" target="_blank">
+          <img class="img-circle img-rotate" src="/myblog/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">云开</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Stay Hungry , Stay Foolish .</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/myblog/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/myblog/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/myblog/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/myblog/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/myblog/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/myblog/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zouyunkai" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/zouyunkai" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/zouyunkai" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/zouyunkai" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/myblog/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/" class="title">软考笔记 （计算机组成与体系结构）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E6%89%80%E9%95%BF%E7%9A%84%E8%B7%A8%E5%AD%A6%E7%A7%91%E5%B7%A5%E5%85%B7%E7%AE%B1/">所长的跨学科工具箱</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/04/12%E6%A6%82%E7%8E%87%E6%80%9D%E7%BB%B4/" class="title">概率思维—把握不确定性</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-04T13:29:00.000Z" itemprop="datePublished">2022-04-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E9%9D%A2%E8%AF%95/">面试</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/02/24/%E7%AE%80%E5%8E%86/" class="title">个人简历</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-24T13:46:00.000Z" itemprop="datePublished">2022-02-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E6%9D%82%E8%AE%B0/">杂记</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/01/25/%E5%85%B3%E4%BA%8E%E5%A4%87%E8%80%83%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95/" class="title">关于备考的方法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T13:29:00.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E6%89%80%E9%95%BF%E7%9A%84%E8%B7%A8%E5%AD%A6%E7%A7%91%E5%B7%A5%E5%85%B7%E7%AE%B1/">所长的跨学科工具箱</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/01/19/01%E6%A8%A1%E6%9D%BF/" class="title">脑科学重要模型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-19T13:29:00.000Z" itemprop="datePublished">2022-01-19</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/myblog/tags/" style="font-size: 13px;">  </a> <a href="/myblog/tags/2019%E6%A0%A1%E8%B5%9B/" style="font-size: 13px;">2019校赛</a> <a href="/myblog/tags/BFS/" style="font-size: 13.2px;">BFS</a> <a href="/myblog/tags/C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 13px;">C++字符串处理</a> <a href="/myblog/tags/CF/" style="font-size: 13px;">CF</a> <a href="/myblog/tags/DFS/" style="font-size: 13.2px;">DFS</a> <a href="/myblog/tags/DOM/" style="font-size: 13px;">DOM</a> <a href="/myblog/tags/DP/" style="font-size: 13px;">DP</a> <a href="/myblog/tags/FFT/" style="font-size: 13px;">FFT</a> <a href="/myblog/tags/KMP/" style="font-size: 13px;">KMP</a> <a href="/myblog/tags/boos/" style="font-size: 13px;">boos</a> <a href="/myblog/tags/c/" style="font-size: 13px;">c</a> <a href="/myblog/tags/c/" style="font-size: 13px;">c#</a> <a href="/myblog/tags/c/" style="font-size: 13.4px;">c++</a> <a href="/myblog/tags/codeforce/" style="font-size: 13.2px;">codeforce</a> <a href="/myblog/tags/comparable-and-comparator/" style="font-size: 13px;">comparable and comparator</a> <a href="/myblog/tags/crypto/" style="font-size: 13px;">crypto</a> <a href="/myblog/tags/c%E8%AF%AD%E8%A8%80%E5%B0%8F%E7%9F%A5%E8%AF%86/" style="font-size: 13px;">c语言小知识</a> <a href="/myblog/tags/git/" style="font-size: 13px;">git</a> <a href="/myblog/tags/html/" style="font-size: 13px;">html</a> <a href="/myblog/tags/iis%E9%85%8D%E7%BD%AE/" style="font-size: 13px;">iis配置</a> <a href="/myblog/tags/java/" style="font-size: 13.2px;">java</a> <a href="/myblog/tags/java-se/" style="font-size: 13.2px;">java se</a> <a href="/myblog/tags/java-%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" style="font-size: 13px;">java 深浅拷贝</a> <a href="/myblog/tags/java%E7%AE%97%E6%B3%95/" style="font-size: 13px;">java算法</a> <a href="/myblog/tags/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 13px;">java网络编程</a> <a href="/myblog/tags/js/" style="font-size: 13px;">js</a> <a href="/myblog/tags/linux%E6%95%99%E7%A8%8B/" style="font-size: 13px;">linux教程</a> <a href="/myblog/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/myblog/tags/param/" style="font-size: 13px;">param</a> <a href="/myblog/tags/qluoj/" style="font-size: 13px;">qluoj</a> <a href="/myblog/tags/sql/" style="font-size: 13px;">sql</a> <a href="/myblog/tags/stl/" style="font-size: 13px;">stl</a> <a href="/myblog/tags/web/" style="font-size: 13.2px;">web</a> <a href="/myblog/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 13px;">二分法</a> <a href="/myblog/tags/%E4%BA%94%E5%AD%90%E6%A3%8B/" style="font-size: 13px;">五子棋</a> <a href="/myblog/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 13.2px;">动态规划</a> <a href="/myblog/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 13px;">单调栈</a> <a href="/myblog/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 13px;">单调队列</a> <a href="/myblog/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" style="font-size: 13px;">博弈论</a> <a href="/myblog/tags/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/" style="font-size: 13px;">哈夫曼编码</a> <a href="/myblog/tags/%E5%93%B2%E5%AD%A6/" style="font-size: 13px;">哲学</a> <a href="/myblog/tags/%E5%9B%BD%E7%8E%8B%E6%8C%96%E9%87%91%E5%AD%90/" style="font-size: 13px;">国王挖金子</a> <a href="/myblog/tags/%E5%9B%BE/" style="font-size: 13.2px;">图</a> <a href="/myblog/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 13px;">图论</a> <a href="/myblog/tags/%E5%A4%A7%E6%95%B0%E8%BF%90%E7%AE%97/" style="font-size: 13px;">大数运算</a> <a href="/myblog/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/" style="font-size: 13.2px;">小游戏</a> <a href="/myblog/tags/%E5%B1%B1%E7%90%86%E5%B7%A5/" style="font-size: 13px;">山理工</a> <a href="/myblog/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 13px;">快速幂</a> <a href="/myblog/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 13px;">排序算法</a> <a href="/myblog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.4px;">数据库</a> <a href="/myblog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13px;">数据结构</a> <a href="/myblog/tags/%E6%96%B0%E7%94%9F%E8%AE%AD%E7%BB%83/" style="font-size: 14px;">新生训练</a> <a href="/myblog/tags/%E6%96%B0%E7%94%9F%E8%AE%AD%E7%BB%83-02/" style="font-size: 13px;">新生训练_02</a> <a href="/myblog/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 13.2px;">最小生成树</a> <a href="/myblog/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" style="font-size: 13.2px;">最短路径</a> <a href="/myblog/tags/%E6%9D%AD%E7%94%B5/" style="font-size: 13px;">杭电</a> <a href="/myblog/tags/%E6%A0%88/" style="font-size: 13px;">栈</a> <a href="/myblog/tags/%E6%A3%8B%E7%9B%98%E8%A6%86%E7%9B%96/" style="font-size: 13px;">棋盘覆盖</a> <a href="/myblog/tags/%E6%A8%A1%E6%9D%BF/" style="font-size: 13px;">模板</a> <a href="/myblog/tags/%E7%89%9B%E5%AE%A2/" style="font-size: 13.8px;">牛客</a> <a href="/myblog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.2px;">算法</a> <a href="/myblog/tags/%E7%B4%A0%E6%95%B0/" style="font-size: 13px;">素数</a> <a href="/myblog/tags/%E8%81%8A%E5%A4%A9%E5%AE%A4/" style="font-size: 13px;">聊天室</a> <a href="/myblog/tags/%E8%81%94%E7%9B%9F%E5%91%A8%E8%B5%9B/" style="font-size: 13px;">联盟周赛</a> <a href="/myblog/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" style="font-size: 13px;">背包问题</a> <a href="/myblog/tags/%E8%8B%B1%E6%96%87%E5%8D%95%E8%AF%8D/" style="font-size: 13px;">英文单词</a> <a href="/myblog/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 13px;">蓝桥杯</a> <a href="/myblog/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AE%97%E6%B3%95/" style="font-size: 13px;">蓝桥杯算法</a> <a href="/myblog/tags/%E8%93%9D%E6%A1%A5%E7%9C%81%E8%B5%9B/" style="font-size: 13.6px;">蓝桥省赛</a> <a href="/myblog/tags/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" style="font-size: 13px;">计网笔记</a> <a href="/myblog/tags/%E8%AE%AD%E7%BB%83/" style="font-size: 13.6px;">训练</a> <a href="/myblog/tags/%E8%B4%AA%E5%90%83%E8%9B%87/" style="font-size: 13px;">贪吃蛇</a> <a href="/myblog/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 13px;">贪心</a> <a href="/myblog/tags/%E9%80%92%E5%BD%92/" style="font-size: 13.4px;">递归</a> <a href="/myblog/tags/%E9%80%92%E5%BD%92%E4%B8%8E%E5%88%86%E6%B2%BB/" style="font-size: 13px;">递归与分治</a> <a href="/myblog/tags/%E9%98%9F%E5%88%97/" style="font-size: 13px;">队列</a> <a href="/myblog/tags/%E9%9A%90%E5%86%99/" style="font-size: 13px;">隐写</a> <a href="/myblog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13px;">面试</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-阿里云自建k8s集群" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      阿里云自建k8s集群
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/myblog/2022/01/19/%E9%98%BF%E9%87%8C%E4%BA%91%E8%87%AA%E5%BB%BAk8s%E9%9B%86%E7%BE%A4/" class="article-date">
+	  <time datetime="2022-01-19T13:29:00.000Z" itemprop="datePublished">2022-01-19</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/myblog/categories/k8s/">k8s</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/myblog/2022/01/19/%E9%98%BF%E9%87%8C%E4%BA%91%E8%87%AA%E5%BB%BAk8s%E9%9B%86%E7%BE%A4/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 856(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="阿里云ecs实例"><a href="#阿里云ecs实例" class="headerlink" title="阿里云ecs实例"></a>阿里云ecs实例</h3><h3 id="安装k8s"><a href="#安装k8s" class="headerlink" title="安装k8s"></a>安装k8s</h3><h3 id="安装kubesphere"><a href="#安装kubesphere" class="headerlink" title="安装kubesphere"></a>安装kubesphere</h3><h3 id="当ecs重启之后出现ks-ks-account一直Init-0-x2F-2；并且ks-apigateway一直CrashLoopBackOff"><a href="#当ecs重启之后出现ks-ks-account一直Init-0-x2F-2；并且ks-apigateway一直CrashLoopBackOff" class="headerlink" title="当ecs重启之后出现ks-ks-account一直Init:0&#x2F;2；并且ks-apigateway一直CrashLoopBackOff"></a>当ecs重启之后出现ks-ks-account一直Init:0&#x2F;2；并且ks-apigateway一直CrashLoopBackOff</h3><ul>
+<li>先启动master节点，在master中删除其他从节点，从节点重新加入k8s的master节点中</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># 首先驱逐要删除节点(假设节点名为k8s-node1)上的pods（master节点执行）</span><br><span class="line">kubectl drain k8s-node1 --delete-local-data --force --ignore-daemonsets</span><br><span class="line"># 然后执行删除（master节点执行）</span><br><span class="line">kubectl delete node k8s-node1</span><br><span class="line">kubeadm token create --print-join-command //重新生成token</span><br><span class="line"># 最后在删除的节点机器上执行</span><br><span class="line">kubeadm reset</span><br><span class="line">kubeadm join 192.168.1.1:6443 --token cbjtfp.flf3hy5y3uoe8twz     --discovery-token-ca-cert-hash sha256:6dd10942ca46910fa44c762859975ca64ee218ba970ea1fa</span><br><span class="line"></span><br><span class="line">tips:执行重新加入master节点的时候出错（https://blog.csdn.net/qq_40460909/article/details/114707380）</span><br><span class="line"></span><br><span class="line">[ERROR FileContent--proc-sys-net-bridge-bridge-nf-call-iptables]: /proc/sys/net/bridge/bridge-nf-call-iptables contents are not set to 1</span><br><span class="line">[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`</span><br><span class="line">To see the stack trace of this error execute with --v=5 or higher</span><br><span class="line"></span><br><span class="line">执行echo &quot;1&quot;&gt;/proc/sys/net/bridge/bridge-nf-call-iptables</span><br><span class="line">或永久解决方法：</span><br><span class="line"></span><br><span class="line">在/etc/sysctl.conf中添加：</span><br><span class="line"></span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">执行sysctl -p 时刷新</span><br><span class="line"></span><br><span class="line"> sysctl -p</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27156945/article/details/102628093">https://blog.csdn.net/qq_27156945/article/details/102628093</a></p>
+<ul>
+<li>最终发现我为什么重启整个集群之后，这个master总是在node节点上拉不起kubesphere，一直是ks-ks-account一直Init:0&#x2F;2；并且ks-apigateway一直CrashLoopBackOff，这就是因为我没有设置其他从节点中的net.bridge.bridge-nf-call-iptables &#x3D; 1，导致主节点不能在从节点上拉起容器，当我设置其值在系统表中，至此，重启之后，master节点能拉起来kubesphere</li>
+</ul>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220407212010571.png" alt="image-20220407212010571"></p>
+<h3 id="脚本删除安装的kubesphere-v2-1"><a href="#脚本删除安装的kubesphere-v2-1" class="headerlink" title="脚本删除安装的kubesphere v2.1"></a>脚本删除安装的kubesphere v2.1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#！/bin/bash</span><br><span class="line"></span><br><span class="line">#helm delete</span><br><span class="line">helms=&quot;elasticsearch-logging elasticsearch-logging-curator istio istio-init jaeger-operator ks-jenkins ks-sonarqube logging-fluentbit-operator metrics-server uc&quot;</span><br><span class="line"></span><br><span class="line">for id in `helm list|awk &#x27;&#123;print $1&#125;&#x27;|grep -v NAME`; do</span><br><span class="line">     result=$(echo $helms | grep &quot;$id&quot;)</span><br><span class="line">     if [[ &quot;$result&quot; != &quot;&quot; ]]</span><br><span class="line">     then</span><br><span class="line">        helm delete --purge $id</span><br><span class="line">     else</span><br><span class="line">        echo &quot;helm resource deleted&quot;</span><br><span class="line">     fi   </span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">#namespace resource delete</span><br><span class="line">namespaces=&quot;kubesphere-system openpitrix-system kubesphere-monitoring-system kubesphere-alerting-system kubesphere-controls-system&quot;</span><br><span class="line"></span><br><span class="line">for namespace in `kubectl get namespaces|awk &#x27;&#123;print $1&#125;&#x27;|grep -v NAME`; do</span><br><span class="line">     result=$(echo $namespaces | grep &quot;$namespace&quot;)</span><br><span class="line">     if [[ &quot;$result&quot; != &quot;&quot; ]]</span><br><span class="line">     then</span><br><span class="line">        kubectl delete all --all -n $namespace</span><br><span class="line">     else</span><br><span class="line">        echo &quot;namespace resource deleted&quot;</span><br><span class="line">     fi   </span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"># pvc delete</span><br><span class="line">pvcs=&quot;kubesphere-system openpitrix-system kubesphere-monitoring-system kubesphere-devops-system kubesphere-logging-system&quot;</span><br><span class="line">for pvcnamespace in `kubectl get pvc --all-namespaces|awk &#x27;&#123;print $1&#125;&#x27;|grep -v NAMESPACE`; do</span><br><span class="line">     result=$(echo $pvcs | grep &quot;$pvcnamespace&quot;)</span><br><span class="line">     if [[ &quot;$result&quot; != &quot;&quot; ]]</span><br><span class="line">     then</span><br><span class="line">        kubectl delete pvc -n $&#123;pvcnamespace&#125; `kubectl get pvc -n $&#123;pvcnamespace&#125;|awk &#x27;&#123;print $1&#125;&#x27;|grep -v NAME`</span><br><span class="line">     else</span><br><span class="line">        echo &quot;pvc resource deleted&quot;</span><br><span class="line">     fi   </span><br><span class="line">done</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="集群重启之后出现集群重启后-ks-关键pod-状态异常"><a href="#集群重启之后出现集群重启后-ks-关键pod-状态异常" class="headerlink" title="集群重启之后出现集群重启后 ks 关键pod 状态异常"></a>集群重启之后出现集群重启后 ks 关键pod 状态异常</h3><p>以ks-account相关举例，其余的ks-apiserver,ks-console等也有类似情况</p>
+<p>在我们集群重启服务器之后，发现ks-account pod有一个状态为pending：</p>
+<p>解决方案：</p>
+<p>1.重启后ks-installer会重新启动，会触发此类deploy重启更新。<br>2.可以describe查看pending状态的pod，由于此类pod设置了反亲和性，所以应该是没有可调度的节点导致重启异常。</p>
+<p>临时解决办法：可以手动删除一个旧版本的pod</p>
+<h3 id="最后建立k8s的方法"><a href="#最后建立k8s的方法" class="headerlink" title="最后建立k8s的方法"></a>最后建立k8s的方法</h3><p>最后用ecs自建集群安装kubesphere很成功，但是，重启整个集群之后总是会因为pvc挂在失败，导致剩下的容器启动失败。最后通过镜像备份的方法始终没能解决，最后换成使用阿里云的ask集群搭建的k8s</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://zouyunkai.github.io/myblog/2022/01/19/%E9%98%BF%E9%87%8C%E4%BA%91%E8%87%AA%E5%BB%BAk8s%E9%9B%86%E7%BE%A4/" title="阿里云自建k8s集群" target="_blank" rel="external">https://zouyunkai.github.io/myblog/2022/01/19/阿里云自建k8s集群/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/zouyunkai" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/myblog/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/zouyunkai" target="_blank"><span class="text-dark">云开</span><small class="ml-1x">Stay Hungry , Stay Foolish .</small></a></h3>
+        <div>when the facts change , I change my mind .</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/myblog/2022/01/19/%E7%A9%BF%E6%90%AD/" title="脑科学重要模型"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/myblog/2022/01/11/%E6%9C%AC%E6%A0%A1%E5%8E%BB%E9%98%BF%E9%87%8C%E9%82%A3%E4%B8%AA%E5%AD%A6%E9%95%BF%E7%9A%84%E6%BC%94%E8%AE%B2/" title="本校去阿里那个学长的演讲"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/myblog/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/myblog/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zouyunkai" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/zouyunkai" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/zouyunkai" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/zouyunkai" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/myblog/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/myblog/js/plugin.min.js"></script>
+
+
+<script src="/myblog/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/myblog/',
+        CONTENT_URL: '/myblog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/myblog/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '9f5iImvmYajPaJ79pRkbVNU9-gzGzoHsz',
+    appKey: 'n3qUzkAGTOqjKi9k5LKGLfgV',
+    placeholder: 'Just go go',
+    avatar: 'wavatar',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
