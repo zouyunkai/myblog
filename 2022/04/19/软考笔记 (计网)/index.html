@@ -17,47 +17,38 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>软考笔记 （计算机组成与体系结构） | Sweet@</title>
-  <meta name="description" content="介绍  第二章2.02数的表示     cpu结构 1.累加寄存器(AC):专门存放算术或逻辑运算的一个操作数和运算结果的寄存器。能进行加，减，读出，移位，求补等操作。是运算器的主要部分。 2.程序状态寄存器(PSW）：该部件用来存放两类信息，一类是体现当前指令执行结果的各种状态信息(条件码)，如有无进位，有无溢出，结果正负，信息是否为零等；另一类是存放控制信息，如允许中断，跟踪标志等。注： ·C">
+  <title>软考笔记（计网） | Sweet@</title>
+  <meta name="description" content="计算机网络七层模型 图注:中继器：信号会随着距离的增加而逐渐衰减，而中继器则接受一端的信息再将其原封不动的发给另一端，起到延长传输距离的作用，而集线器就是多端口的中继器；网桥是用于连接两个同类型网络的设备，交换机则是多端口的网桥，用来将多个设备联网起来，而三层交换机则是添加了路由功能的交换机；局域网只能在两层设备内进行交流，第三层的设备则不能进行交流  网络技术标准与协议 图注： (1)ICMP：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="软考笔记 （计算机组成与体系结构）">
-<meta property="og:url" content="https://zouyunkai.github.io/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="软考笔记（计网）">
+<meta property="og:url" content="https://zouyunkai.github.io/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/index.html">
 <meta property="og:site_name" content="Sweet@">
-<meta property="og:description" content="介绍  第二章2.02数的表示     cpu结构 1.累加寄存器(AC):专门存放算术或逻辑运算的一个操作数和运算结果的寄存器。能进行加，减，读出，移位，求补等操作。是运算器的主要部分。 2.程序状态寄存器(PSW）：该部件用来存放两类信息，一类是体现当前指令执行结果的各种状态信息(条件码)，如有无进位，有无溢出，结果正负，信息是否为零等；另一类是存放控制信息，如允许中断，跟踪标志等。注： ·C">
+<meta property="og:description" content="计算机网络七层模型 图注:中继器：信号会随着距离的增加而逐渐衰减，而中继器则接受一端的信息再将其原封不动的发给另一端，起到延长传输距离的作用，而集线器就是多端口的中继器；网桥是用于连接两个同类型网络的设备，交换机则是多端口的网桥，用来将多个设备联网起来，而三层交换机则是添加了路由功能的交换机；局域网只能在两层设备内进行交流，第三层的设备则不能进行交流  网络技术标准与协议 图注： (1)ICMP：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094108041.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094247517.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100414041.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100508107.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100639698.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419113835267.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419132614998.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419134427506.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419141654682.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419142832569.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419142902967.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419143821659.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420092724228.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420092937250.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420093749147.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420094016146.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20210628154645762.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20190727162206550.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20190727162141796.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420105158807.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420110615008.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420112330041.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420130647603.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420112758506.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420113533881.png">
-<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420130450181.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517195749341.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517200243821.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517200540279.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517200727169.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517201328216.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517201848105.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517201952373.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517203321756.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517204004672.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517204308292.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517204422688.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517204554266.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517205900980.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517210532180.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517211518689.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517212126374.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517212149276.png">
 <meta property="article:published_time" content="2022-04-19T13:29:00.000Z">
-<meta property="article:modified_time" content="2022-04-20T05:09:17.388Z">
+<meta property="article:modified_time" content="2022-05-17T13:22:04.028Z">
 <meta property="article:author" content="zouqingzhi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094108041.png">
+<meta name="twitter:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517195749341.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://zouyunkai.github.io/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/index.html">
+  <link rel="canonical" href="https://zouyunkai.github.io/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Sweet@" type="application/atom+xml">
   
@@ -234,7 +225,52 @@
                 <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
               </p>
               <p class="item-title">
-                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/" class="title">软考笔记 （计算机组成与体系结构）</a>
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)/" class="title">软考笔记 （操作系统）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/" class="title">软考笔记（计网）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/" class="title">软考笔记 （计算机组成与体系结构）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E6%95%B0%E6%8D%AE%E5%BA%93)/" class="title">软考笔记 （数据库）</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
@@ -253,51 +289,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2022-04-04T13:29:00.000Z" itemprop="datePublished">2022-04-04</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/myblog/categories/%E9%9D%A2%E8%AF%95/">面试</a>
-              </p>
-              <p class="item-title">
-                <a href="/myblog/2022/02/24/%E7%AE%80%E5%8E%86/" class="title">个人简历</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-02-24T13:46:00.000Z" itemprop="datePublished">2022-02-24</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/myblog/categories/%E6%9D%82%E8%AE%B0/">杂记</a>
-              </p>
-              <p class="item-title">
-                <a href="/myblog/2022/01/25/%E5%85%B3%E4%BA%8E%E5%A4%87%E8%80%83%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95/" class="title">关于备考的方法</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-01-25T13:29:00.000Z" itemprop="datePublished">2022-01-25</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/myblog/categories/%E6%89%80%E9%95%BF%E7%9A%84%E8%B7%A8%E5%AD%A6%E7%A7%91%E5%B7%A5%E5%85%B7%E7%AE%B1/">所长的跨学科工具箱</a>
-              </p>
-              <p class="item-title">
-                <a href="/myblog/2022/01/19/01%E6%A8%A1%E6%9D%BF/" class="title">脑科学重要模型</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-01-19T13:29:00.000Z" itemprop="datePublished">2022-01-19</time>
               </p>
             </div>
           </li>
@@ -324,14 +315,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-软考笔记" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-软考笔记 (计网)" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      软考笔记 （计算机组成与体系结构）
+      软考笔记（计网）
     </h1>
   
 
@@ -339,7 +330,7 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/" class="article-date">
+	<a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/" class="article-date">
 	  <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
 	</a>
 </span>
@@ -353,87 +344,138 @@
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.2k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.9k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094108041.png" alt="image-20220419094108041"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094247517.png" alt="image-20220419094247517"></p>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h3 id="2-02数的表示"><a href="#2-02数的表示" class="headerlink" title="2.02数的表示"></a>2.02数的表示</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100414041.png" alt="image-20220419100414041"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100508107.png" alt="image-20220419100508107"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100639698.png" alt="image-20220419100639698"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419113835267.png" alt="image-20220419113835267"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419132614998.png" alt="image-20220419132614998"></p>
-<h3 id="cpu结构"><a href="#cpu结构" class="headerlink" title="cpu结构"></a>cpu结构</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419134427506.png" alt="image-20220419134427506"></p>
-<p>1.累加寄存器(AC):<strong>专门存放算术或逻辑运算的一个操作数和运算结果的寄存器</strong>。能进行加，减，读出，移位，求补等操作。是运算器的主要部分。</p>
-<p>2.程序状态寄存器(PSW）：该部件用来存放两类信息，<strong>一类是体现当前指令执行结果的各种状态信息(条件码)，如有无进位，有无溢出，结果正负，信息是否为零等；另一类是存放控制信息，如允许中断，跟踪标志等。</strong><br>注：</p>
-<p>·CPU的寻址方式除了直接寻址以外还有多种寻址方式，目的是为了在效率和方便性上找一个平衡</p>
-<p>·CPU根据指令周期的不同阶段来区分内存中以二进制编码形式存放的指令和数据</p>
-<p>·指令最先进入到数据寄存器暂存起来，然后在拿到指令寄存器中，再交由指令译码器来解码进而运算(交给运算器)，而这一过程一结束，就会迅速提取程序计数器中的指令(即下一条指令)，因此，<strong>程序计数器中存储的始终是暂未执行的，下一条指令的“地址”；</strong></p>
-<h3 id="Flynn分类法"><a href="#Flynn分类法" class="headerlink" title="Flynn分类法"></a>Flynn分类法</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419141654682.png" alt="image-20220419141654682"></p>
-<h3 id="CISC和RISC"><a href="#CISC和RISC" class="headerlink" title="CISC和RISC"></a>CISC和RISC</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419142832569.png" alt="image-20220419142832569"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419142902967.png" alt="image-20220419142902967"></p>
-<h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419143821659.png" alt="image-20220419143821659"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420092724228.png" alt="image-20220420092724228"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420092937250.png" alt="image-20220420092937250"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420093749147.png" alt="image-20220420093749147"></p>
-<p>注：所有步骤花费时间相等的指令执行的效率最高</p>
-<h3 id="Cache基本概念"><a href="#Cache基本概念" class="headerlink" title="Cache基本概念"></a>Cache基本概念</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420094016146.png" alt="image-20220420094016146"></p>
-<p>注：内存存储外存的部分内容，cache存储内存的部分内容，CPU只处理cache中的指令，<strong>cache的作用是精简内存中重复出现的指令（时间和空间局部性），是按内容存储的，提高CPU的执行效率，使得计算机的运算速度得到极大的提升</strong>；此外，结构中由上至下，速度越来越慢，但容量越来越大（是成本决定的）。</p>
-<p>1.cache的功能：<strong>提高CPU输入输出的速率</strong>，突破冯诺依曼瓶颈，即<strong>CPU与存储器系统间数据传送带宽限制</strong>，在程序执行过程中，Cache与主存的地址映射是由硬件自动完成的。</p>
-<p>2.与cache相关的计算：如果以h代表对cache的访问命中率，t1表示cache的周期时间，t2表示主存储器周期时间，以读操作为例，使用“chche+主存储器”的系统的平均周期为t3，则：**t3&#x3D;h×t1+(1-h)×t2；其中，(1-h)又称为失效率(未命中率)**。</p>
-<p>注：CPU会在cache中寻找它需要的数据，如果不能找到，CPU就将前往内存中寻找，<strong>而chche的访问命中率就是CPU需要的数据在cache中被找到的比例，未能找到的数据CPU将前往内存中进行再次寻找。</strong></p>
-<p>3.内存与cache地址映射的三种方式：cache与内存的地址映像方式有三种，分别是直接映像(cache的区号与内存的区号一一对应)、全相连映像(cache的一个块号可以对应多个内存的块号，内存的一个块号也可以对应cache的多个块号)，组相连映像(即两种方式相结合的方法)</p>
-<p>注：这三种映射方式都是计算机硬件自动完成的，不是软件</p>
-<p>4.替换算法：替换算法的目的是使cache获得尽可能高的命中率，有以下四种：</p>
-<ol>
-<li>随机算法（RAND）：随机地确定替换的Cache块。它的实现比较简单，但没有依据程序访问的局部性原理，故可能命中率较低。</li>
-<li>先进先出算法（FIFO）：选择最早调入的行进行替换。它比较容易实现，但也没有依据程序访问的局部性原理，可能会把一些需要经常使用的程序块（如循环程序）也作为最早进入Cache的块替换掉。</li>
-<li>近期最少使用算法（LRU）：依据程序访问的局部性原理选择近期内长久未访问过的存储行作为替换的行，平均命中率要比FIFO要高，是堆栈类算法。LRU算法对每行设置一个计数器，Cache每命中一次，命中行计数器清0，而其他各行计数器均加1，需要替换时比较各特定行的计数值，<strong>将计数值最大的行换出</strong>。</li>
-<li>最不经常使用算法（LFU）：将一段时间内被访问次数最少的存储行换出。每行也设置一个计数器，新行建立后从0开始计数，每访问一次，被访问的行计数器加1，需要替换时比较各特定行的计数值，<strong>将计数值最小的行换出</strong>。</li>
-</ol>
-<p>这里算法不要求？？？？</p>
-<p>先进先出（FIFO）</p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20210628154645762.png" alt="img"></p>
-<p>在二路组相联映射中采用 <strong>FIFO 替换算法：</strong></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20190727162206550.png" alt="在这里插入图片描述"></p>
-<p>在二路组相联映射中采用 <strong>LRU 替换算法：</strong></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20190727162141796.png" alt="在这里插入图片描述"></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/badmer/article/details/118305208">https://blog.csdn.net/badmer/article/details/118305208</a></p>
-<p>注：现代的计算机cache系统是分为了三个级别的，访问时先从第一层开始访问，直至三个级别的cache都被访问完全时才会访问内存</p>
-<p>5.虚拟存储器：即cpu在给出需要访问的内存地址时，给出的并不是真正的物理地址，而是物理地址的抽象，虚拟存储器是由主存-辅存两级存储器组成</p>
-<h3 id="随机存储器和只读存储器"><a href="#随机存储器和只读存储器" class="headerlink" title="随机存储器和只读存储器"></a>随机存储器和只读存储器</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420105158807.png" alt="image-20220420105158807"></p>
-<h3 id="磁盘工作原理"><a href="#磁盘工作原理" class="headerlink" title="磁盘工作原理"></a>磁盘工作原理</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420110615008.png" alt="image-20220420110615008"></p>
-<p>注：磁道一般分为许多个小的扇形区，即物理块，磁头在依次读取这些物理块时(磁头必须依次读取)，会在读取的同时将其存放进缓存区，缓存区可以是单个，也可以是多个，<strong>存放完成后会在缓存区花费时间进行处理，处理期间磁头的读取不会停止</strong>，因此，如果缓存区过少，就会出现：读取一个物理块花费了一个周期甚至更长的时间。</p>
-<p>磁盘调度管理中，先进行移臂调度寻找磁道，再进行旋转调度寻找扇区，所以就是存取时间为寻道时间加等待时间。</p>
-<h3 id="计算机总线"><a href="#计算机总线" class="headerlink" title="计算机总线"></a>计算机总线</h3><p>根据总线所处的位置不同，总线通常被分成三种类型：</p>
-<p>0.概念：总线是连接计算机有关部件的一组信号线，是计算机中用来传送信息代码的公共通道。</p>
-<p>1.内部总线：微机内部的，各个外围芯片与处理器之间的总线，属于芯片级别</p>
-<p>2.系统总线：系统总线即为各个插线板和系统板之间的总线（如PCI总线，为了连接外部设备的）；包括(1)数据总线：如32位，64位等一次性能够传输的位(2)地址总线：假设该计算机的地址总线为32位，那就代表它的地址空间为2^32个字节(3)控制总线：发送相应的控制信号的总线</p>
-<p>3.外部总线：即微机和外部设备的总线</p>
-<p>注：总线上的多个部件之间只能分时向总线发送数据，但可以同时从总线接收数据</p>
-<h3 id="串联系统与并联系统可靠度计算"><a href="#串联系统与并联系统可靠度计算" class="headerlink" title="串联系统与并联系统可靠度计算"></a>串联系统与并联系统可靠度计算</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420112330041.png" alt="image-20220420112330041"></p>
-<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420130647603.png" alt="image-20220420130647603"></p>
-<h3 id="校验码"><a href="#校验码" class="headerlink" title="校验码"></a>校验码</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420112758506.png" alt="image-20220420112758506"></p>
-<p>码距的作用：增大码距能够起到检错的作用，因为数据在传输的过程中如果链路出现了</p>
-<p>问题，那么将会使得接收到的二进制数发生变化，若码距过小，则很可能造成信息的混淆，增大码距就使得被改变的二进制数混淆信息的概率极大的降低;若码距再进行增大，则能够起到纠错的作用，因为数据链路出错的概率比较低，只能造成传输中极少二进制数的改变，我们可以根据该传输失真的二进制数中大部分二进制数的构成来进行推断，推断出结果就达到了纠错的目的。</p>
-<h3 id="CRC"><a href="#CRC" class="headerlink" title="CRC"></a>CRC</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420113533881.png" alt="image-20220420113533881"></p>
-<p>注(1)：生成多项式是一个二进制数，如”X^4+X^3+X+1”,这个生成多项式实际上就是二进制数11011；在相除时，需在原码后方添加一些0，添加的0的个数等于生成多项式的位数减去1，增加的0即为校验信息。</p>
-<p>注(2)：二进制的除法与算术除法相似，唯一不同的是所得除数在作减法时，减得的值要取绝对值，即0-1&#x3D;1，就是<strong>异或操作</strong>；这样使得整个除法运算中不存在借位。</p>
+        <h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="七层模型"><a href="#七层模型" class="headerlink" title="七层模型"></a>七层模型</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517195749341.png" alt="image-20220517195749341"></p>
+<p>图注:中继器：信号会随着距离的增加而逐渐衰减，而中继器则接受一端的信息再将其原封不动的发给另一端，起到延长传输距离的作用，而集线器就是多端口的中继器；网桥是用于连接两个同类型网络的设备，交换机则是多端口的网桥，用来将多个设备联网起来，而三层交换机则是添加了路由功能的交换机；局域网只能在两层设备内进行交流，第三层的设备则不能进行交流<br><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517200243821.png" alt="image-20220517200243821"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517200540279.png" alt="image-20220517200540279"></p>
+<h3 id="网络技术标准与协议"><a href="#网络技术标准与协议" class="headerlink" title="网络技术标准与协议"></a>网络技术标准与协议</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517200727169.png" alt="image-20220517200727169"></p>
+<p>图注：</p>
+<p>(1)ICMP：称之为因特网的控制协议；IGMP是组管理协议。</p>
+<p>(2)ARP：是地址解析协议(即IP转MAC）</p>
+<p>(3)RARP：是反向地址解析协议(MAC转IP）</p>
+<p>(4)TCP：被称为可靠的协议，因其在通信时会建立连接(通过三次握手来建立连接，即A与B三次互发信息)，且在传输信息时有验证机制，以验证数据包是否顺利传输，其上方的FTP，Telnet等协议都是建立在TCP基础上的</p>
+<p>(5)UDP：称为不可靠的协议，因其在建立时不会建立连接，因其在传输数据时，会直接将数据发送给另一方</p>
+<p>(6)DHCP：用来做动态的IP地址的分配工作</p>
+<p>(7)TFTP：是小文件传输协议</p>
+<p>(8)SNMP：是简单网络管理协议</p>
+<p>(9)DNS：是域名解析协议</p>
+<p>(10)位于中间部分的Samba协议、CIFS协议、NFS协议则是可基于两种基本协议</p>
+<p>(11)TCP和UDP均提供了端口寻址能力</p>
+<p>(12)MIML：是一个互联网标准，扩展了电子邮箱标准，使其能够支持电子邮箱的使用</p>
+<p>(13)PGP：是一套用于信息加密、验证的应用程序，可用于加密电子邮件内容</p>
+<p>(14)Https：是HTTP的安全版，它是在HTTP的基础上加上了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密</p>
 <ul>
-<li>异或操作就是相同为0，不同为1</li>
+<li>TCP三次握手（提供可靠的传输）</li>
 </ul>
-<h3 id="海明码"><a href="#海明码" class="headerlink" title="海明码"></a>海明码</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420130450181.png" alt="image-20220420130450181"></p>
-
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517201328216.png" alt="image-20220517201328216"></p>
+<ul>
+<li>常用的端口号</li>
+</ul>
+<p>使用TCP协议常见端口主要有以下几种</p>
+<p>1）FTP——文件传输协议——21</p>
+<p>2）Telnet——远程登陆协议——23</p>
+<p>3）SMTP——简单邮件传送协议——25</p>
+<p>4）POP3——接收邮件——110</p>
+<p>5）HTTP——超文本传输协议——80</p>
+<p>使用UDP协议常见端口主要有以下几种：</p>
+<p>1）DNS——域名解析服务——53</p>
+<p>2）SNMP——简单网络管理协议——161</p>
+<p>3）TFTP——简单文件传输的协议——69</p>
+<ul>
+<li><p>DHCP协议</p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517201848105.png" alt="image-20220517201848105"></p>
+</li>
+</ul>
+<p>概念：负责动态的分配IP地址，客户机在接入网络之后，向DHCP服务器提出IP地址的分配请求，服务器会根据网络IP地址资源情况给客户机分配IP地址</p>
+<p>图注：DHCP服务器向客户机分配的IP地址会有租约，租约默认为八天，若客户机的地址一直未改变，DHCP服务器就会将之前的IP地址重新分配给客户机，而DHCP服务器的分配方式则有三种：固定分配，动态分配，自动分配；较特殊的IP地址： 169.254.X.X(windows系统中分配该IP);0.0.0.0(lilux系统中分配该IP）,这两个IP地址称之为假地址，即未与DHCP服务器连接上时即会被分配这两个地址</p>
+<ul>
+<li>windows中有关DHCP服务的命令：</li>
+</ul>
+<p>ipconfig：显示信息</p>
+<p>ipconfig&#x2F;all：显示详细信息，可查看DHCP服务是否已启用以及显示它已配置且所要使用的附加信息(如IP地址等),并且显示内置于本地网卡中的物理地址</p>
+<p>ipconfig&#x2F;renew：更新所有适配器,即重新申请IP地址</p>
+<p>ipconfig&#x2F;release：释放所有匹配的连接(IP地址)，只能在向DHCP服务器租用其IP地址的计算机上起作用</p>
+<ul>
+<li><p>DNS协议</p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517201952373.png" alt="image-20220517201952373"></p>
+</li>
+</ul>
+<p>IP地址是唯一标识计算机的方式，而一大串数字对于用户的记忆并不友好，域名的出现就是为了解决这个问题，而DNS服务器则是负责将域名转为IP地址</p>
+<ul>
+<li>查询域名的基本方式：</li>
+</ul>
+<p> (1)递归查询： 如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份， 向其它根域名服务器（<strong>全世界的根域名服务器就那么几台</strong>）继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。   因此，递归查询返回的查询结果是所要查询的IP地址，或者是报错，表示无法查询到所需的IP地址。<br>(2)迭代查询（多次执行某个方法）：当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么给出所要查询的IP地址，要么告诉本地服务器：“你下一步应当向哪一个域名服务器进行查询”。**(一问一答)**<br>然后让本地服务器进行后续的查询。根域名服务器通常是把自己知道的顶级域名服务器的IP地址告诉本地域名服务器，让本地域名服务器再向顶级域名服务器查询。</p>
+<p>顶级域名服务器在收到本地域名服务器的查询请求后，要么给出所要查询的IP地址，要么告诉本地服务器下一步应当向哪一个权限域名服务器进行查询。</p>
+<p>最后，知道了所要解析的IP地址或报错，然后把这个结果返回给发起查询的主机</p>
+<p>注：(1)<strong>主机向本地域名服务器的查询一般都是采用递归查询。因为本地域名服务器会追根纠底的去查询该域名对应的ip地址然后返回给主机。这就像是递归。</strong></p>
+<p>(2)本地域名服务器向根域名服务器的查询采用迭代查询。<strong>因为本地域名服务器的访问压力不大，可以使用递归查询，但是根域名的访问压力太大了，只能说用迭代查询。</strong></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517203321756.png" alt="image-20220517203321756"></p>
+<ul>
+<li>DNS服务器域名请求流程：</li>
+</ul>
+<p>(1)客户机提出域名请求，并将该请求发送给本地的域名服务器</p>
+<p>(2)当本地的域名服务器收到请求后，就先查询本地的缓存，如果有该记录项，则本地域名服务器就直接把查询的结果返回</p>
+<p>(3)如果本地的缓存中没有该记录，则本地域名服务器就直接把请求发给根域名服务器，然后根域名服务器再返回给本地域名服务器一个所查询的域(根的子域)的主域名服务器的地址</p>
+<p>(4)本地服务器再向上一步返回的域名服务器发送请求，然后接收请求的服务器查询自己的缓存，如果没有记录，则返回相关的下级的域名服务器的地址</p>
+<p>(5)重复第四步，直到找到正确的记录</p>
+<p>(6)本地域名服务器把返回的结果保存到缓存，以备下一次使用，同时还将返回结果到客户机</p>
+<ul>
+<li>Hosts文件：</li>
+</ul>
+<p>是一个没有扩展名的系统文件，可以用记事本打开，其作用就是将一些常用的网址与其对应的IP地址建立一个关联“数据库”，当用户在浏览器中输入一个需要登陆的网址时，系统会首先自动从Hosts文件中寻找对应的IP地址，一旦找到，系统会立即打开对应网页，如果没有找到，系统将会把网址提交给DNS域名解析服务器进行IP地址的解析</p>
+<p><strong>注意：Hosts文件配置的映射是静态的，如果网络上的计算机更改了请及时更新IP地址，否则不能访问</strong></p>
+<ul>
+<li>诊断DNS故障的命令</li>
+</ul>
+<p>nslookup：是一个检测网络中DNS服务器是否能正确实现域名的命令行工具</p>
+<p>PING命令：常用于测试连通性，在此过程中可看出是直接ping的目标地址</p>
+<p>注：nslookup、ping、tracert都可以加上一个主机域名作为其命令参数来诊断DNS故障，nslookup还可以看到本地DNS服务器地址，rp命令是与arp记录有关，与DNS无关联</p>
+<ul>
+<li>常见协议的默认端口</li>
+</ul>
+<p>https：443</p>
+<p>http：80</p>
+<p>sql数据库：8080</p>
+<h3 id="计算机网络的分类——拓扑结构"><a href="#计算机网络的分类——拓扑结构" class="headerlink" title="计算机网络的分类——拓扑结构"></a>计算机网络的分类——拓扑结构</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517204004672.png" alt="image-20220517204004672"></p>
+<h3 id="网络规划与设计"><a href="#网络规划与设计" class="headerlink" title="网络规划与设计"></a>网络规划与设计</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517204308292.png" alt="image-20220517204308292"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517204422688.png" alt="image-20220517204422688"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517204554266.png" alt="image-20220517204554266"></p>
+<p>图注：核心层只负责高速数据的交换，且采用冗余设计，即采用几台设备处理这些数据，这样做可以提高安全性，因此对设备的性能有较高要求</p>
+<h3 id="IP地址与子网划分"><a href="#IP地址与子网划分" class="headerlink" title="IP地址与子网划分"></a>IP地址与子网划分</h3><ul>
+<li>ip地址</li>
+</ul>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517205900980.png" alt="image-20220517205900980"></p>
+<p>图注：在IP地址发展的第一阶段中，IP地址被划分为ABC三个类别：在A类地址中，后三个字节用来表示主机号，第一个字节表示网络号，A类地址包含2^24-2台主机，减掉的2是全零的地址和全1的地址，因为全零代表着一个网络的地址而非主机，全1则代表网络中的广播地址,且其首字节的首个位为0，包含的网络号是从0<del>127；B类地址则是主机号与网络号1：1，网络号的范围是128</del>191；C类地址则是网络号与主机号为1：3,网络号的范围是192~223；</p>
+<p>IP地址发展的第二阶段则是将ABC类IP地址各自再划分为数个范围（即子网掩码的方式）；</p>
+<p>IP地址发展的第三阶段则是采用了无分类编址，如该表示方式：如172.18.129.0&#x2F;24；”&#x2F;“号后面的24表示“前24个位都是网络号</p>
+<ul>
+<li><p>子网划分</p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517210532180.png" alt="image-20220517210532180"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517211518689.png" alt="image-20220517211518689"></p>
+<p>1.子网掩码的概念：将一个IP地址划分为n个子网或者将n个子网合并都需要利用子网掩码，用于区分一个IP地址哪些部分是网络号，哪些部分是主机号，为1则对应网络号，为0则对应主机号。<strong>若判断两个ip地址是否是一个子网中的，只需要求出这个地址对应的子网掩码化为二进制，看看这个子网掩码是不是相同的即可。</strong></p>
+<p>2.子网划分的步骤：首先将十进制划分为二进制数，再将网络号的二进制数全部转换为1，再取主机号的二进制数，取二进制数的数量k与子网划分的个数N满足：2^k&gt;&#x3D;N，（<strong>这里一般取2^k,而不是2^k-2，是因为现在技术发达了，可以直接能使用到地址全0和全1的网络地址</strong>）；再将取到的主机号的二进制数转换为1，最终将该转换过的IP地址二进制数化为十进制数即为子网掩码</p>
+</li>
+<li><p>无类域间路由</p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517212126374.png" alt="image-20220517212126374"></p>
+</li>
+<li><p>特殊含义的IP地址</p>
+</li>
+</ul>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220517212149276.png" alt="image-20220517212149276"></p>
+<p>图注：127网段(127.0.0.1)还可以用来测试计算机的TCP&#x2F;IP协议组是否正常。</p>
+<h3 id="HTML与无线网"><a href="#HTML与无线网" class="headerlink" title="HTML与无线网"></a>HTML与无线网</h3>
       
     </div>
     <div class="article-footer">
@@ -442,7 +484,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://zouyunkai.github.io/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/" title="软考笔记 （计算机组成与体系结构）" target="_blank" rel="external">https://zouyunkai.github.io/myblog/2022/04/19/软考笔记/</a>
+      <a href="https://zouyunkai.github.io/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/" title="软考笔记（计网）" target="_blank" rel="external">https://zouyunkai.github.io/myblog/2022/04/19/软考笔记 (计网)/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -488,9 +530,13 @@
   
   <ul class="pager pull-left">
     
+    <li class="prev">
+      <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)/" title="软考笔记 （操作系统）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
     
     <li class="next">
-      <a href="/myblog/2022/04/04/12%E6%A6%82%E7%8E%87%E6%80%9D%E7%BB%B4/" title="概率思维—把握不确定性"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/" title="软考笔记 （计算机组成与体系结构）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

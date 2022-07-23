@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>软考笔记 （计算机组成与体系结构） | Sweet@</title>
+  <meta name="description" content="介绍  第二章2.02数的表示     cpu结构 1.累加寄存器(AC):专门存放算术或逻辑运算的一个操作数和运算结果的寄存器。能进行加，减，读出，移位，求补等操作。是运算器的主要部分。 2.程序状态寄存器(PSW）：该部件用来存放两类信息，一类是体现当前指令执行结果的各种状态信息(条件码)，如有无进位，有无溢出，结果正负，信息是否为零等；另一类是存放控制信息，如允许中断，跟踪标志等。注： ·C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考笔记 （计算机组成与体系结构）">
+<meta property="og:url" content="https://zouyunkai.github.io/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/index.html">
+<meta property="og:site_name" content="Sweet@">
+<meta property="og:description" content="介绍  第二章2.02数的表示     cpu结构 1.累加寄存器(AC):专门存放算术或逻辑运算的一个操作数和运算结果的寄存器。能进行加，减，读出，移位，求补等操作。是运算器的主要部分。 2.程序状态寄存器(PSW）：该部件用来存放两类信息，一类是体现当前指令执行结果的各种状态信息(条件码)，如有无进位，有无溢出，结果正负，信息是否为零等；另一类是存放控制信息，如允许中断，跟踪标志等。注： ·C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094108041.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094247517.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100414041.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100508107.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100639698.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419113835267.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419132614998.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419134427506.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419141654682.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419142832569.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419142902967.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419143821659.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420092724228.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420092937250.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420093749147.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420094016146.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20210628154645762.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20190727162206550.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20190727162141796.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420105158807.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420110615008.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420112330041.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420130647603.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420112758506.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420113533881.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420130450181.png">
+<meta property="article:published_time" content="2022-04-19T13:29:00.000Z">
+<meta property="article:modified_time" content="2022-06-22T09:44:20.945Z">
+<meta property="article:author" content="zouqingzhi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094108041.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zouyunkai.github.io/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Sweet@" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/myblog/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/zouyunkai" target="_blank">
+          <img class="img-circle img-rotate" src="/myblog/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">云开</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Stay Hungry , Stay Foolish .</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/myblog/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/myblog/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/myblog/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/myblog/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/myblog/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/myblog/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zouyunkai" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/zouyunkai" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/zouyunkai" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/zouyunkai" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/myblog/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)/" class="title">软考笔记 （操作系统）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/" class="title">软考笔记（计网）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/" class="title">软考笔记 （计算机组成与体系结构）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E6%95%B0%E6%8D%AE%E5%BA%93)/" class="title">软考笔记 （数据库）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/myblog/categories/%E6%89%80%E9%95%BF%E7%9A%84%E8%B7%A8%E5%AD%A6%E7%A7%91%E5%B7%A5%E5%85%B7%E7%AE%B1/">所长的跨学科工具箱</a>
+              </p>
+              <p class="item-title">
+                <a href="/myblog/2022/04/04/12%E6%A6%82%E7%8E%87%E6%80%9D%E7%BB%B4/" class="title">概率思维—把握不确定性</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-04T13:29:00.000Z" itemprop="datePublished">2022-04-04</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/myblog/tags/" style="font-size: 13px;">  </a> <a href="/myblog/tags/2019%E6%A0%A1%E8%B5%9B/" style="font-size: 13px;">2019校赛</a> <a href="/myblog/tags/BFS/" style="font-size: 13.2px;">BFS</a> <a href="/myblog/tags/C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 13px;">C++字符串处理</a> <a href="/myblog/tags/CF/" style="font-size: 13px;">CF</a> <a href="/myblog/tags/DFS/" style="font-size: 13.2px;">DFS</a> <a href="/myblog/tags/DOM/" style="font-size: 13px;">DOM</a> <a href="/myblog/tags/DP/" style="font-size: 13px;">DP</a> <a href="/myblog/tags/FFT/" style="font-size: 13px;">FFT</a> <a href="/myblog/tags/KMP/" style="font-size: 13px;">KMP</a> <a href="/myblog/tags/boos/" style="font-size: 13px;">boos</a> <a href="/myblog/tags/c/" style="font-size: 13px;">c</a> <a href="/myblog/tags/c/" style="font-size: 13px;">c#</a> <a href="/myblog/tags/c/" style="font-size: 13.4px;">c++</a> <a href="/myblog/tags/codeforce/" style="font-size: 13.2px;">codeforce</a> <a href="/myblog/tags/comparable-and-comparator/" style="font-size: 13px;">comparable and comparator</a> <a href="/myblog/tags/crypto/" style="font-size: 13px;">crypto</a> <a href="/myblog/tags/c%E8%AF%AD%E8%A8%80%E5%B0%8F%E7%9F%A5%E8%AF%86/" style="font-size: 13px;">c语言小知识</a> <a href="/myblog/tags/git/" style="font-size: 13px;">git</a> <a href="/myblog/tags/html/" style="font-size: 13px;">html</a> <a href="/myblog/tags/iis%E9%85%8D%E7%BD%AE/" style="font-size: 13px;">iis配置</a> <a href="/myblog/tags/java/" style="font-size: 13.2px;">java</a> <a href="/myblog/tags/java-se/" style="font-size: 13.2px;">java se</a> <a href="/myblog/tags/java-%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" style="font-size: 13px;">java 深浅拷贝</a> <a href="/myblog/tags/java%E7%AE%97%E6%B3%95/" style="font-size: 13px;">java算法</a> <a href="/myblog/tags/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 13px;">java网络编程</a> <a href="/myblog/tags/js/" style="font-size: 13px;">js</a> <a href="/myblog/tags/linux%E6%95%99%E7%A8%8B/" style="font-size: 13px;">linux教程</a> <a href="/myblog/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/myblog/tags/param/" style="font-size: 13px;">param</a> <a href="/myblog/tags/qluoj/" style="font-size: 13px;">qluoj</a> <a href="/myblog/tags/sql/" style="font-size: 13px;">sql</a> <a href="/myblog/tags/stl/" style="font-size: 13px;">stl</a> <a href="/myblog/tags/web/" style="font-size: 13.2px;">web</a> <a href="/myblog/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 13px;">二分法</a> <a href="/myblog/tags/%E4%BA%94%E5%AD%90%E6%A3%8B/" style="font-size: 13px;">五子棋</a> <a href="/myblog/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 13.2px;">动态规划</a> <a href="/myblog/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 13px;">单调栈</a> <a href="/myblog/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 13px;">单调队列</a> <a href="/myblog/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" style="font-size: 13px;">博弈论</a> <a href="/myblog/tags/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/" style="font-size: 13px;">哈夫曼编码</a> <a href="/myblog/tags/%E5%93%B2%E5%AD%A6/" style="font-size: 13px;">哲学</a> <a href="/myblog/tags/%E5%9B%BD%E7%8E%8B%E6%8C%96%E9%87%91%E5%AD%90/" style="font-size: 13px;">国王挖金子</a> <a href="/myblog/tags/%E5%9B%BE/" style="font-size: 13.2px;">图</a> <a href="/myblog/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 13px;">图论</a> <a href="/myblog/tags/%E5%A4%A7%E6%95%B0%E8%BF%90%E7%AE%97/" style="font-size: 13px;">大数运算</a> <a href="/myblog/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/" style="font-size: 13.2px;">小游戏</a> <a href="/myblog/tags/%E5%B1%B1%E7%90%86%E5%B7%A5/" style="font-size: 13px;">山理工</a> <a href="/myblog/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 13px;">快速幂</a> <a href="/myblog/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 13px;">排序算法</a> <a href="/myblog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.4px;">数据库</a> <a href="/myblog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13px;">数据结构</a> <a href="/myblog/tags/%E6%96%B0%E7%94%9F%E8%AE%AD%E7%BB%83/" style="font-size: 14px;">新生训练</a> <a href="/myblog/tags/%E6%96%B0%E7%94%9F%E8%AE%AD%E7%BB%83-02/" style="font-size: 13px;">新生训练_02</a> <a href="/myblog/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 13.2px;">最小生成树</a> <a href="/myblog/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" style="font-size: 13.2px;">最短路径</a> <a href="/myblog/tags/%E6%9D%AD%E7%94%B5/" style="font-size: 13px;">杭电</a> <a href="/myblog/tags/%E6%A0%88/" style="font-size: 13px;">栈</a> <a href="/myblog/tags/%E6%A3%8B%E7%9B%98%E8%A6%86%E7%9B%96/" style="font-size: 13px;">棋盘覆盖</a> <a href="/myblog/tags/%E6%A8%A1%E6%9D%BF/" style="font-size: 13px;">模板</a> <a href="/myblog/tags/%E7%89%9B%E5%AE%A2/" style="font-size: 13.8px;">牛客</a> <a href="/myblog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.2px;">算法</a> <a href="/myblog/tags/%E7%B4%A0%E6%95%B0/" style="font-size: 13px;">素数</a> <a href="/myblog/tags/%E8%81%8A%E5%A4%A9%E5%AE%A4/" style="font-size: 13px;">聊天室</a> <a href="/myblog/tags/%E8%81%94%E7%9B%9F%E5%91%A8%E8%B5%9B/" style="font-size: 13px;">联盟周赛</a> <a href="/myblog/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" style="font-size: 13px;">背包问题</a> <a href="/myblog/tags/%E8%8B%B1%E6%96%87%E5%8D%95%E8%AF%8D/" style="font-size: 13px;">英文单词</a> <a href="/myblog/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 13px;">蓝桥杯</a> <a href="/myblog/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AE%97%E6%B3%95/" style="font-size: 13px;">蓝桥杯算法</a> <a href="/myblog/tags/%E8%93%9D%E6%A1%A5%E7%9C%81%E8%B5%9B/" style="font-size: 13.6px;">蓝桥省赛</a> <a href="/myblog/tags/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" style="font-size: 13px;">计网笔记</a> <a href="/myblog/tags/%E8%AE%AD%E7%BB%83/" style="font-size: 13.6px;">训练</a> <a href="/myblog/tags/%E8%B4%AA%E5%90%83%E8%9B%87/" style="font-size: 13px;">贪吃蛇</a> <a href="/myblog/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 13px;">贪心</a> <a href="/myblog/tags/%E9%80%92%E5%BD%92/" style="font-size: 13.4px;">递归</a> <a href="/myblog/tags/%E9%80%92%E5%BD%92%E4%B8%8E%E5%88%86%E6%B2%BB/" style="font-size: 13px;">递归与分治</a> <a href="/myblog/tags/%E9%98%9F%E5%88%97/" style="font-size: 13px;">队列</a> <a href="/myblog/tags/%E9%9A%90%E5%86%99/" style="font-size: 13px;">隐写</a> <a href="/myblog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13px;">面试</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-软考笔记（机组体系）" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      软考笔记 （计算机组成与体系结构）
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/" class="article-date">
+	  <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094108041.png" alt="image-20220419094108041"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419094247517.png" alt="image-20220419094247517"></p>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h3 id="2-02数的表示"><a href="#2-02数的表示" class="headerlink" title="2.02数的表示"></a>2.02数的表示</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100414041.png" alt="image-20220419100414041"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100508107.png" alt="image-20220419100508107"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419100639698.png" alt="image-20220419100639698"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419113835267.png" alt="image-20220419113835267"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419132614998.png"></p>
+<h3 id="cpu结构"><a href="#cpu结构" class="headerlink" title="cpu结构"></a>cpu结构</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419134427506.png" alt="image-20220419134427506"></p>
+<p>1.累加寄存器(AC):<strong>专门存放算术或逻辑运算的一个操作数和运算结果的寄存器</strong>。能进行加，减，读出，移位，求补等操作。是运算器的主要部分。</p>
+<p>2.程序状态寄存器(PSW）：该部件用来存放两类信息，<strong>一类是体现当前指令执行结果的各种状态信息(条件码)，如有无进位，有无溢出，结果正负，信息是否为零等；另一类是存放控制信息，如允许中断，跟踪标志等。</strong><br>注：</p>
+<p>·CPU的寻址方式除了直接寻址以外还有多种寻址方式，目的是为了在效率和方便性上找一个平衡</p>
+<p>·CPU根据指令周期的不同阶段来区分内存中以二进制编码形式存放的指令和数据</p>
+<p>·指令最先进入到数据寄存器暂存起来，然后在拿到指令寄存器中，再交由指令译码器来解码进而运算(交给运算器)，而这一过程一结束，就会迅速提取程序计数器中的指令(即下一条指令)，因此，<strong>程序计数器中存储的始终是暂未执行的，下一条指令的“地址”；</strong></p>
+<h3 id="Flynn分类法"><a href="#Flynn分类法" class="headerlink" title="Flynn分类法"></a>Flynn分类法</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419141654682.png" alt="image-20220419141654682"></p>
+<h3 id="CISC和RISC"><a href="#CISC和RISC" class="headerlink" title="CISC和RISC"></a>CISC和RISC</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419142832569.png" alt="image-20220419142832569"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419142902967.png" alt="image-20220419142902967"></p>
+<h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220419143821659.png" alt="image-20220419143821659"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420092724228.png" alt="image-20220420092724228"></p>
+<p>上图中的这个所有的1指的是第一条指令执行完，也就是说一个指令执行完的时间是3个方格，是取指、分析、执行三部分都完成的时间，并非这一行n个格子！</p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420092937250.png" alt="image-20220420092937250"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420093749147.png" alt="image-20220420093749147"></p>
+<p>注：所有步骤花费时间相等的指令执行的效率最高</p>
+<h3 id="Cache基本概念"><a href="#Cache基本概念" class="headerlink" title="Cache基本概念"></a>Cache基本概念</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420094016146.png" alt="image-20220420094016146"></p>
+<p>注：内存存储外存的部分内容，cache存储内存的部分内容，CPU只处理cache中的指令，<strong>cache的作用是精简内存中重复出现的指令（时间和空间局部性），是按内容存储的，提高CPU的执行效率，使得计算机的运算速度得到极大的提升</strong>；此外，结构中由上至下，速度越来越慢，但容量越来越大（是成本决定的）。</p>
+<p>1.cache的功能：<strong>提高CPU输入输出的速率</strong>，突破冯诺依曼瓶颈，即<strong>CPU与存储器系统间数据传送带宽限制</strong>，在程序执行过程中，Cache与主存的地址映射是由硬件自动完成的。</p>
+<p>2.与cache相关的计算：如果以h代表对cache的访问命中率，t1表示cache的周期时间，t2表示主存储器周期时间，以读操作为例，使用“chche+主存储器”的系统的平均周期为t3，则：**t3&#x3D;h×t1+(1-h)×t2；其中，(1-h)又称为失效率(未命中率)**。</p>
+<p>注：CPU会在cache中寻找它需要的数据，如果不能找到，CPU就将前往内存中寻找，<strong>而chche的访问命中率就是CPU需要的数据在cache中被找到的比例，未能找到的数据CPU将前往内存中进行再次寻找。</strong></p>
+<p>3.内存与cache地址映射的三种方式：cache与内存的地址映像方式有三种，分别是直接映像(cache的区号与内存的区号一一对应)、全相连映像(cache的一个块号可以对应多个内存的块号，内存的一个块号也可以对应cache的多个块号)，组相连映像(即两种方式相结合的方法)</p>
+<p>注：这三种映射方式都是计算机硬件自动完成的，不是软件</p>
+<p>4.替换算法：替换算法的目的是使cache获得尽可能高的命中率，有以下四种：</p>
+<ol>
+<li>随机算法（RAND）：随机地确定替换的Cache块。它的实现比较简单，但没有依据程序访问的局部性原理，故可能命中率较低。</li>
+<li>先进先出算法（FIFO）：选择最早调入的行进行替换。它比较容易实现，但也没有依据程序访问的局部性原理，可能会把一些需要经常使用的程序块（如循环程序）也作为最早进入Cache的块替换掉。</li>
+<li>近期最少使用算法（LRU）：依据程序访问的局部性原理选择近期内长久未访问过的存储行作为替换的行，平均命中率要比FIFO要高，是堆栈类算法。LRU算法对每行设置一个计数器，Cache每命中一次，命中行计数器清0，而其他各行计数器均加1，需要替换时比较各特定行的计数值，<strong>将计数值最大的行换出</strong>。</li>
+<li>最不经常使用算法（LFU）：将一段时间内被访问次数最少的存储行换出。每行也设置一个计数器，新行建立后从0开始计数，每访问一次，被访问的行计数器加1，需要替换时比较各特定行的计数值，<strong>将计数值最小的行换出</strong>。</li>
+</ol>
+<p>这里算法不要求？？？？</p>
+<p>先进先出（FIFO）</p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20210628154645762.png" alt="img"></p>
+<p>在二路组相联映射中采用 <strong>FIFO 替换算法：</strong></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20190727162206550.png" alt="在这里插入图片描述"></p>
+<p>在二路组相联映射中采用 <strong>LRU 替换算法：</strong></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/20190727162141796.png" alt="在这里插入图片描述"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/badmer/article/details/118305208">https://blog.csdn.net/badmer/article/details/118305208</a></p>
+<p>注：现代的计算机cache系统是分为了三个级别的，访问时先从第一层开始访问，直至三个级别的cache都被访问完全时才会访问内存</p>
+<p>5.虚拟存储器：即cpu在给出需要访问的内存地址时，给出的并不是真正的物理地址，而是物理地址的抽象，虚拟存储器是由主存-辅存两级存储器组成</p>
+<h3 id="随机存储器和只读存储器"><a href="#随机存储器和只读存储器" class="headerlink" title="随机存储器和只读存储器"></a>随机存储器和只读存储器</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420105158807.png" alt="image-20220420105158807"></p>
+<h3 id="磁盘工作原理"><a href="#磁盘工作原理" class="headerlink" title="磁盘工作原理"></a>磁盘工作原理</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420110615008.png" alt="image-20220420110615008"></p>
+<p>注：磁道一般分为许多个小的扇形区，即物理块，磁头在依次读取这些物理块时(磁头必须依次读取)，会在读取的同时将其存放进缓存区，缓存区可以是单个，也可以是多个，<strong>存放完成后会在缓存区花费时间进行处理，处理期间磁头的读取不会停止</strong>，因此，如果缓存区过少，就会出现：读取一个物理块花费了一个周期甚至更长的时间。</p>
+<p>磁盘调度管理中，先进行移臂调度寻找磁道，再进行旋转调度寻找扇区，所以就是存取时间为寻道时间加等待时间。</p>
+<h3 id="计算机总线"><a href="#计算机总线" class="headerlink" title="计算机总线"></a>计算机总线</h3><p>根据总线所处的位置不同，总线通常被分成三种类型：</p>
+<p>0.概念：总线是连接计算机有关部件的一组信号线，是计算机中用来传送信息代码的公共通道。</p>
+<p>1.内部总线：微机内部的，各个外围芯片与处理器之间的总线，属于芯片级别</p>
+<p>2.系统总线：系统总线即为各个插线板和系统板之间的总线（如PCI总线，为了连接外部设备的）；包括(1)数据总线：如32位，64位等一次性能够传输的位(2)地址总线：假设该计算机的地址总线为32位，那就代表它的地址空间为2^32个字节(3)控制总线：发送相应的控制信号的总线</p>
+<p>3.外部总线：即微机和外部设备的总线</p>
+<p>注：总线上的多个部件之间只能分时向总线发送数据，但可以同时从总线接收数据</p>
+<h3 id="串联系统与并联系统可靠度计算"><a href="#串联系统与并联系统可靠度计算" class="headerlink" title="串联系统与并联系统可靠度计算"></a>串联系统与并联系统可靠度计算</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420112330041.png" alt="image-20220420112330041"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420130647603.png" alt="image-20220420130647603"></p>
+<h3 id="校验码"><a href="#校验码" class="headerlink" title="校验码"></a>校验码</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420112758506.png" alt="image-20220420112758506"></p>
+<p>码距的作用：增大码距能够起到检错的作用，因为数据在传输的过程中如果链路出现了</p>
+<p>问题，那么将会使得接收到的二进制数发生变化，若码距过小，则很可能造成信息的混淆，增大码距就使得被改变的二进制数混淆信息的概率极大的降低;若码距再进行增大，则能够起到纠错的作用，因为数据链路出错的概率比较低，只能造成传输中极少二进制数的改变，我们可以根据该传输失真的二进制数中大部分二进制数的构成来进行推断，推断出结果就达到了纠错的目的。</p>
+<h3 id="CRC"><a href="#CRC" class="headerlink" title="CRC"></a>CRC</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420113533881.png" alt="image-20220420113533881"></p>
+<p>注(1)：生成多项式是一个二进制数，如”X^4+X^3+X+1”,这个生成多项式实际上就是二进制数11011；在相除时，需在原码后方添加一些0，添加的0的个数等于生成多项式的位数减去1，增加的0即为校验信息。</p>
+<p>注(2)：二进制的除法与算术除法相似，唯一不同的是所得除数在作减法时，减得的值要取绝对值，即0-1&#x3D;1，就是<strong>异或操作</strong>；这样使得整个除法运算中不存在借位。</p>
+<ul>
+<li>异或操作就是相同为0，不同为1</li>
+</ul>
+<h3 id="海明码"><a href="#海明码" class="headerlink" title="海明码"></a>海明码</h3><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images2/image-20220420130450181.png" alt="image-20220420130450181"></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://zouyunkai.github.io/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/" title="软考笔记 （计算机组成与体系结构）" target="_blank" rel="external">https://zouyunkai.github.io/myblog/2022/04/19/软考笔记（机组体系）/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/zouyunkai" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/myblog/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/zouyunkai" target="_blank"><span class="text-dark">云开</span><small class="ml-1x">Stay Hungry , Stay Foolish .</small></a></h3>
+        <div>when the facts change , I change my mind .</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/" title="软考笔记（计网）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E6%95%B0%E6%8D%AE%E5%BA%93)/" title="软考笔记 （数据库）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/myblog/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/myblog/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zouyunkai" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/zouyunkai" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/zouyunkai" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/zouyunkai" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/myblog/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/myblog/js/plugin.min.js"></script>
+
+
+<script src="/myblog/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/myblog/',
+        CONTENT_URL: '/myblog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/myblog/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '9f5iImvmYajPaJ79pRkbVNU9-gzGzoHsz',
+    appKey: 'n3qUzkAGTOqjKi9k5LKGLfgV',
+    placeholder: 'Just go go',
+    avatar: 'wavatar',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
