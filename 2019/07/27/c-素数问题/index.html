@@ -25,14 +25,14 @@
 <meta property="og:site_name" content="Sweet@">
 <meta property="og:description" content="数论素数问题 对于寻找素数，第一时间想到的便是二重循环暴力查找，其复杂度O(n)，通过循环中只判断到根号n可以优化一些，不过复杂度也达不到预期。 埃氏筛法  O(nloglogn)的算法，而在一些数据范围达到1e7这样的题目中，也很难让人满意 欧拉筛法，也即 O(n)的线性筛法。   暴力求素数1234567891011121314#include &lt;iostream&gt;using na">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-22.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-22.png">
 <meta property="article:published_time" content="2019-07-27T03:18:00.000Z">
-<meta property="article:modified_time" content="2022-02-26T03:52:52.347Z">
+<meta property="article:modified_time" content="2022-07-24T08:55:05.735Z">
 <meta property="article:author" content="zouqingzhi">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="素数">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-22.png">
+<meta name="twitter:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-22.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://zouyunkai.github.io/myblog/2019/07/27/c-%E7%B4%A0%E6%95%B0%E9%97%AE%E9%A2%98/index.html">
   
@@ -241,7 +241,7 @@
                 <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
               </p>
               <p class="item-title">
-                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/" class="title">软考笔记 （计算机组成与体系结构）</a>
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/" class="title">软考笔记（计网）</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
@@ -256,7 +256,7 @@
                 <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
               </p>
               <p class="item-title">
-                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/" class="title">软考笔记（计网）</a>
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/" class="title">软考笔记 （计算机组成与体系结构）</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
@@ -360,8 +360,8 @@
 </code></pre>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">int prime[maxn];  </span><br><span class="line">bool is_prime[maxn];</span><br><span class="line"></span><br><span class="line">int sieve(int n)&#123;</span><br><span class="line">    int num = 0;   </span><br><span class="line">    //num从0开始，这样下面prime数组从1开始存放num个素数，但总的个数是num个</span><br><span class="line">  	memset(is_prime, true, sizeof(is_prime));</span><br><span class="line">    is_prime[0] = is_prime[1] = false;</span><br><span class="line">    for (int i = 2; i &lt;= n; ++i)&#123;   //  注意数组大小是n</span><br><span class="line">        if(is_prime[i])&#123;</span><br><span class="line">            prime[num++] = i;</span><br><span class="line">            for(int j = 2; j*i &lt;= n; j++ )  //  轻剪枝，j必定是i的倍数</span><br><span class="line">                is_prime[j*i] = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return num;   //  返回素数个数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	</span><br><span class="line">	cout&lt;&lt;sieve(4)&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;=4;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;prime[i]&lt;&lt;&quot; &quot;&lt;&lt;isPrime[i]&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">运行结果：</span><br><span class="line">2   //两个素数</span><br><span class="line">2 0  //前面一列是num个素数的表，就是prime数组，下标从0开始</span><br><span class="line">3 0  //后面一列是is_prime数组的真假值，下标从0开始</span><br><span class="line">0 1</span><br><span class="line">0 1</span><br><span class="line">0 0</span><br></pre></td></tr></table></figure>
 
+
 <pre><code>    * 埃氏筛法的缺陷 ：对于一个合数，有可能被筛多次。例如 30 = 2 * 15 = 3* 10 = 5*6……那么如何确保每个合数只被筛选一次呢？我们只要用它的  最小质因子  来筛选即可，这便是欧拉筛法。
-    
 </code></pre>
 <h6 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h6><pre><code>* 欧拉筛法的基本思想 ：在埃氏筛法的基础上，让每个合数只被它的**最小质因子**筛选一次，以达到不重复的目的。
 </code></pre>
@@ -371,12 +371,12 @@
 <li>如果i%prime[j]&#x3D;&#x3D;0，那么i就可以看成prime[i]乘以一个数（记为n）；因为我们存的prime是从小到大存的，所以prime[j+1]&gt;prime[j]；那么i<em>prime[j+1]就可以看成prime[j]<em>n</em>prime[j+1];那么i</em>prime[j+1]的最小质因子是prime[j]。<strong>加上if(i%prime[j]&#x3D;&#x3D;0) break后我们就可以保证每一个数只被它的最小质因子给筛去</strong>,那么每一个数只会被筛一次，那么时间复杂度为O(n)。**举个例子 **：i &#x3D; 8 ，j &#x3D; 1，prime[j] &#x3D; 2，如果不跳出循环，prime[j+1] &#x3D; 3，8 * 3 &#x3D; 2 * 4 * 3 &#x3D; 2 * 12，在i &#x3D; 12时会计算。因为欧拉筛法的原理便是通过最小素因子来消除。</li>
 </ul>
 <p>下图是n&#x3D;20的模拟。（p[j]是代码中的prime[j]，tot是cnt）</p>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-22.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-22.png" alt="upload successful"></p>
 <h6 id="约数个数，欧拉函数等"><a href="#约数个数，欧拉函数等" class="headerlink" title="约数个数，欧拉函数等"></a>约数个数，欧拉函数等</h6><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43896346/article/details/88396182">https://blog.csdn.net/weixin_43896346/article/details/88396182</a></p>
 <ul>
-<li><h3 id="下一个"><a href="#下一个" class="headerlink" title="下一个"></a>下一个</h3></li>
+<li></li>
 </ul>
-
+<h3 id="下一个"><a href="#下一个" class="headerlink" title="下一个"></a>下一个</h3>
       
     </div>
     <div class="article-footer">

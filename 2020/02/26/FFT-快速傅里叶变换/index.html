@@ -25,29 +25,29 @@
 <meta property="og:site_name" content="Sweet@">
 <meta property="og:description" content="FFT 快速傅里叶变换通常用来优化两个多项式的乘积  其中的一种做法就是暴力卷积1234567891011121314151617181920212223242526272829#include&lt;algorithm&gt;#include&lt;cstdio&gt;#define Maxn 1000500using namespace std;inline int read()&amp;#123;&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-421.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-415.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-422.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-423.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-424.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-425.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-426.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-427.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-417.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-418.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-419.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-428.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-430.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-431.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-434.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-436.png">
-<meta property="og:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-435.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-421.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-415.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-422.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-423.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-424.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-425.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-426.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-427.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-417.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-418.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-419.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-428.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-430.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-431.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-434.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-436.png">
+<meta property="og:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-435.png">
 <meta property="article:published_time" content="2020-02-26T12:43:00.000Z">
-<meta property="article:modified_time" content="2022-02-26T03:52:51.986Z">
+<meta property="article:modified_time" content="2022-07-24T08:52:02.325Z">
 <meta property="article:author" content="zouqingzhi">
 <meta property="article:tag" content="FFT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zouyunkai.github.io/myblog/%5Caoyue%5Cimages%5Cpasted-421.png">
+<meta name="twitter:image" content="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-421.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://zouyunkai.github.io/myblog/2020/02/26/FFT-%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html">
   
@@ -256,7 +256,7 @@
                 <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
               </p>
               <p class="item-title">
-                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/" class="title">软考笔记 （计算机组成与体系结构）</a>
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/" class="title">软考笔记（计网）</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
@@ -271,7 +271,7 @@
                 <a class="category-link" href="/myblog/categories/%E8%BD%AF%E8%80%83/">软考</a>
               </p>
               <p class="item-title">
-                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%20(%E8%AE%A1%E7%BD%91)/" class="title">软考笔记（计网）</a>
+                <a href="/myblog/2022/04/19/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9C%BA%E7%BB%84%E4%BD%93%E7%B3%BB%EF%BC%89/" class="title">软考笔记 （计算机组成与体系结构）</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-04-19T13:29:00.000Z" itemprop="datePublished">2022-04-19</time>
@@ -364,39 +364,39 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h3 id="FFT-快速傅里叶变换"><a href="#FFT-快速傅里叶变换" class="headerlink" title="FFT 快速傅里叶变换"></a>FFT 快速傅里叶变换</h3><p>通常用来优化两个多项式的乘积</p>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-421.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-421.png" alt="upload successful"></p>
 <h5 id="其中的一种做法就是暴力卷积"><a href="#其中的一种做法就是暴力卷积" class="headerlink" title="其中的一种做法就是暴力卷积"></a>其中的一种做法就是暴力卷积</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#define Maxn 1000500</span><br><span class="line">using namespace std;</span><br><span class="line">inline int read()</span><br><span class="line">&#123;//快读 </span><br><span class="line">  register int X=0;</span><br><span class="line">  register char ch=0;</span><br><span class="line">  while(ch&lt;48||ch&gt;57)ch=getchar();</span><br><span class="line">  while(ch&gt;=48&amp;&amp;ch&lt;=57)X=X*10+(ch^48),ch=getchar();</span><br><span class="line">  return X;</span><br><span class="line">&#125;</span><br><span class="line">int n,m;</span><br><span class="line">long long f[Maxn],g[Maxn],s[Maxn];</span><br><span class="line">void mul(long long *s,long long *f,long long *g)</span><br><span class="line">&#123;</span><br><span class="line">  for (int k=0;k&lt;n+m-1;k++)</span><br><span class="line">    for (int i=0;i&lt;=k;i++)</span><br><span class="line">      s[k]+=f[i]*g[k-i];//第i位和第k-i位的乘积贡献给s[ks] </span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  scanf(&quot;%d%d&quot;,&amp;n,&amp;m);n++;m++;</span><br><span class="line">  for (int i=0;i&lt;n;i++)f[i]=read();</span><br><span class="line">  for (int i=0;i&lt;m;i++)g[i]=read();</span><br><span class="line">  mul(s,f,g);</span><br><span class="line">  for (int i=0;i&lt;n+m-1;i++)printf(&quot;%lld &quot;,s[i]);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="多项式的两种表示方法"><a href="#多项式的两种表示方法" class="headerlink" title="多项式的两种表示方法"></a>多项式的两种表示方法</h4><p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-415.png" alt="upload successful"><br>我们通常表示一个n−1次多项式是利用系数表示法like this:f(x)&#x3D;a0+a1x+a2x^2+…+an−1x^（n−1）<br>点值表示法即为将多项式用坐标系上的若干个点表示<br>我们对这个多项式代入不同的值{x1,x2,…,xn}<br>我们就可以得到n个点(x1,f(x1)),(x2,f(x2)),…,(xn,f(xn))<br>实际上只要保证代入的n个数互不相同，那么这n个点就对应了唯一的f(x)（类似n元一次方程组？）<br><strong>点值表示法它的优势在哪呢？，用点值表示法计算多项式为O（n）</strong><br>我们如果想要求出两个多项式相乘，系数表示法就很麻烦，而点值表示法却只需要将相同的x对应的点值相乘就行了  </p>
-<h4 id="n次单位根"><a href="#n次单位根" class="headerlink" title="n次单位根"></a>n次单位根</h4><p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-422.png" alt="upload successful"></p>
+<h4 id="多项式的两种表示方法"><a href="#多项式的两种表示方法" class="headerlink" title="多项式的两种表示方法"></a>多项式的两种表示方法</h4><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-415.png" alt="upload successful"><br>我们通常表示一个n−1次多项式是利用系数表示法like this:f(x)&#x3D;a0+a1x+a2x^2+…+an−1x^（n−1）<br>点值表示法即为将多项式用坐标系上的若干个点表示<br>我们对这个多项式代入不同的值{x1,x2,…,xn}<br>我们就可以得到n个点(x1,f(x1)),(x2,f(x2)),…,(xn,f(xn))<br>实际上只要保证代入的n个数互不相同，那么这n个点就对应了唯一的f(x)（类似n元一次方程组？）<br><strong>点值表示法它的优势在哪呢？，用点值表示法计算多项式为O（n）</strong><br>我们如果想要求出两个多项式相乘，系数表示法就很麻烦，而点值表示法却只需要将相同的x对应的点值相乘就行了  </p>
+<h4 id="n次单位根"><a href="#n次单位根" class="headerlink" title="n次单位根"></a>n次单位根</h4><p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-422.png" alt="upload successful"></p>
 <ul>
 <li>复数的运算：</li>
 </ul>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-423.png" alt="upload successful"></p>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-424.png" alt="upload successful"><br> 复数相乘时,模长相乘,幅角相加！</p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-423.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-424.png" alt="upload successful"><br> 复数相乘时,模长相乘,幅角相加！</p>
 <ul>
 <li>n次单位根的概念<br>n次单位根(n为正整数)是n次幂为1的复数。</li>
 </ul>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-425.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-425.png" alt="upload successful"></p>
 <ul>
 <li>n次单位根的性质</li>
 </ul>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-426.png" alt="upload successful"></p>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-427.png" alt="upload successful"></p>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-417.png" alt="upload successful"></p>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-418.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-426.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-427.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-417.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-418.png" alt="upload successful"></p>
 <h4 id="FFT"><a href="#FFT" class="headerlink" title="FFT"></a>FFT</h4><ul>
 <li>FFT 的算法流程。<br>“把系数表达转换为点值表达”的算法叫做DFT<br>把两个点值表示的多项式相乘<br>“把点值表示的结果 转换为系数表达的结果”的算法叫做IDFT(DFT的逆运算)</li>
 </ul>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-419.png" alt="upload successful"></p>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-428.png" alt="upload successful"></p>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-430.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-419.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-428.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-430.png" alt="upload successful"></p>
 <ul>
 <li>IFFT</li>
 </ul>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-431.png" alt="upload successful"></p>
-<p>证明方法：单位根反演或范德蒙德矩阵求逆<br>其中<br><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-434.png" alt="upload successful"></p>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-436.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-431.png" alt="upload successful"></p>
+<p>证明方法：单位根反演或范德蒙德矩阵求逆<br>其中<br><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-434.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-436.png" alt="upload successful"></p>
 <ul>
 <li>样例代码<br>二进制翻转优化“分”，合并的时候避免了数组拷贝，用原来的f数组。&#x2F;边&gt;&gt;，运算更快。</li>
 </ul>
@@ -406,7 +406,7 @@
 <ul>
 <li>优化</li>
 </ul>
-<p><img src="/myblog/%5Caoyue%5Cimages%5Cpasted-435.png" alt="upload successful"></p>
+<p><img src="https://yunkaiblog.oss-cn-qingdao.aliyuncs.com/images/pasted-435.png" alt="upload successful"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">更加优化的算法：</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#define Maxn 1350000</span><br><span class="line">using namespace std;</span><br><span class="line">const double Pi=acos(-1);</span><br><span class="line">inline int read()</span><br><span class="line">&#123;</span><br><span class="line">  register char ch=0;</span><br><span class="line">  while(ch&lt;48||ch&gt;57)ch=getchar();</span><br><span class="line">  return ch-&#x27;0&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">int n,m;</span><br><span class="line">struct CP</span><br><span class="line">&#123;</span><br><span class="line">  CP (double xx=0,double yy=0)&#123;x=xx,y=yy;&#125;</span><br><span class="line">  double x,y;</span><br><span class="line">  CP operator + (CP const &amp;B) const</span><br><span class="line">  &#123;return CP(x+B.x,y+B.y);&#125;</span><br><span class="line">  CP operator - (CP const &amp;B) const</span><br><span class="line">  &#123;return CP(x-B.x,y-B.y);&#125;</span><br><span class="line">  CP operator * (CP const &amp;B) const</span><br><span class="line">  &#123;return CP(x*B.x-y*B.y,x*B.y+y*B.x);&#125;</span><br><span class="line">&#125;f[Maxn&lt;&lt;1];//只用了一个复数数组 </span><br><span class="line">int tr[Maxn&lt;&lt;1];</span><br><span class="line">void fft(CP *f,bool flag)</span><br><span class="line">&#123;</span><br><span class="line">  for (int i=0;i&lt;n;i++)</span><br><span class="line">    if (i&lt;tr[i])swap(f[i],f[tr[i]]);</span><br><span class="line">  for(int p=2;p&lt;=n;p&lt;&lt;=1)&#123;</span><br><span class="line">    int len=p&gt;&gt;1;</span><br><span class="line">    CP tG(cos(2*Pi/p),sin(2*Pi/p));</span><br><span class="line">    if(!flag)tG.y*=-1;</span><br><span class="line">    for(int k=0;k&lt;n;k+=p)&#123;</span><br><span class="line">      CP buf(1,0);</span><br><span class="line">      for(int l=k;l&lt;k+len;l++)&#123;</span><br><span class="line">        CP tt=buf*f[len+l];</span><br><span class="line">        f[len+l]=f[l]-tt;//因为用到一个f数组，所以这一句和下面一句不能颠倒</span><br><span class="line">        f[l]=f[l]+tt;</span><br><span class="line">        buf=buf*tG;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">  for (int i=0;i&lt;=n;i++)f[i].x=read();</span><br><span class="line">  for (int i=0;i&lt;=m;i++)f[i].y=read();</span><br><span class="line">  for(m+=n,n=1;n&lt;=m;n&lt;&lt;=1);</span><br><span class="line">  for(int i=0;i&lt;n;i++)</span><br><span class="line">    tr[i]=(tr[i&gt;&gt;1]&gt;&gt;1)|((i&amp;1)?n&gt;&gt;1:0);</span><br><span class="line">  fft(f,1);</span><br><span class="line">  for(int i=0;i&lt;n;++i)f[i]=f[i]*f[i];</span><br><span class="line">  fft(f,0);</span><br><span class="line">  for(int i=0;i&lt;=m;++i)</span><br><span class="line">    printf(&quot;%d &quot;,(int)(f[i].y/n/2+0.49));</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>tips：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/command-block/fft-xue-xi-bi-ji">洛谷参考</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Cool-Angel/p/10471958.html">简单版的介绍fft</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Morning-Glory/p/10289087.html">合并时的操作</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/GGN_2015/article/details/69518685">二进制翻转介绍</a> </p>
